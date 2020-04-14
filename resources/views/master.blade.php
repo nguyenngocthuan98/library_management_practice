@@ -1,0 +1,9 @@
+@include('partials.header')
+<body>
+	@include('partials.navbar')
+    <main>
+        @yield('main')
+    </main>
+    @include('partials.footer')
+</body>
+@include('partials.footer_script')
