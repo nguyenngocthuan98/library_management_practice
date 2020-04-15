@@ -20,11 +20,23 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
+                                {{-- name --}}
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ trans('auth/register.name') }}</label>
                                     <div class="col-md-6">
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="{{ trans('auth/register.ex_name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                    
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                {{-- email --}}
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('auth/register.email_address') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ trans('auth/register.ex_email_address') }}" required autocomplete="email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -32,7 +44,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
                             {{-- password --}}
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('auth/register.password') }}</label>
@@ -100,7 +111,7 @@
                                 </div>
                             </div>
                             {{-- btn-register --}}
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-0 ">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn_register">
                                         {{ trans('auth/register.btn_register') }}

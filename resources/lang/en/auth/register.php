@@ -21,5 +21,6 @@ return [
     'ex_name' => 'Name',
     'ex_password' => 'Password',
     'ex_confirm_password' => 'Confirm Password',
+    'ex_email_address' => 'E-Mail Address',
 
 ];
