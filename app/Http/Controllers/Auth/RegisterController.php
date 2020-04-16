@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Registerrequest;
 
 class RegisterController extends Controller
 {
@@ -22,52 +22,31 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('guest');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return view('auth.register');
     }
 
     /**
      * Create a new user instance after a valid registration.
+     * Role: user: role = 0 (default), admin: role = 1
      *
-     * @param  array  $data
+     * @param
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(RegisterRequest $req)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return $user = [
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => bcrypt($req->password),
+            'birth' => $req->birth,
+            'address' => $req->address,
+            'gender' => $req->gender,
+            'phone' => $req->phone,
+            'role' => 0,
+        ];
+        $user = User::create($user);
+        return redirect()->route('home');
     }
 }
