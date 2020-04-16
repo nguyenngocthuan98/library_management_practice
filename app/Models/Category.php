@@ -19,7 +19,7 @@ class Category extends Model
      * @var array
      */
     protected $filllable = [
-        'name_categogy',
+        'name_category',
         'id_parent',
         'path',
     ];
