@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Registerrequest;
 
 class RegisterController extends Controller
@@ -21,10 +22,23 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    use RegistersUsers;
 
-    public function index()
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('auth.register');
+        $this->middleware('guest');
     }
 
     /**
@@ -34,9 +48,14 @@ class RegisterController extends Controller
      * @param
      * @return \App\User
      */
+    public function index()
+    {
+        return view('auth.register');
+    }
+
     protected function create(RegisterRequest $req)
     {
-        return $user = [
+        $user = [
             'name' => $req->name,
             'email' => $req->email,
             'password' => bcrypt($req->password),
