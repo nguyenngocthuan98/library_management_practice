@@ -32,8 +32,12 @@ class Category extends Model
     /**
      * Relationships
      */
-    public function user(){
-        return $this->belongsto(User::class);
+    public function book(){
+        return $this->belongsto(Book::class);
+    }
+
+    public function children(){
+        return $this->hasMany(Category::class, 'id_parent');
     }
 
 }
