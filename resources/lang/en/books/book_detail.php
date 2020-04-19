@@ -1,6 +1,7 @@
 <?php 
 
 return [
+	'title_header' => 'Book Detail'
 	'book_detail' => 'Book Detail',
 	'rating' => 'Rating',
 	'author' => 'Author',
@@ -11,5 +12,4 @@ return [
 	'other' => 'Other',
 	'comment' => 'Comment',
 	'read_more' => 'Read More',
-	
 ];

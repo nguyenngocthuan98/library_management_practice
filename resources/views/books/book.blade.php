@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title_header', trans('books/edit_book.title_header'))
+@section('title_header', trans('books/book.title_header'))
 
 @section('main')
 
@@ -139,7 +139,7 @@
                     </div>
                     <div class="site-pagination">
                         <div class="content_center">
-                            <a href="#" class="active">01</a>
+                        <a href="#" class="active">01</a>
                         <a href="#">02</a>
                         <a href="#">03</a>
                         </div>
@@ -241,4 +241,3 @@
     <!-- Book item -->
 
 @endsection
-

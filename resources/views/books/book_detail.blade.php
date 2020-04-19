@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title_header', trans('book_detail/book_detail.title_header'))
+@section('title_header', trans('books/book_detail.title_header'))
 
 @section('main')
 
@@ -16,12 +16,12 @@
                 <div class="col-6">
                     <div class="gs_meta">
                         <h3 class="gs_title">Final Appocalipse 2.1</h3>
-                        <h3>{{ trans('book_detail/book_detail.author') }}: Gai Gao</h3>
-                        <h3>{{ trans('book_detail/book_detail.status') }}: AAAAAA</h3>
-                        <h3>{{ trans('book_detail/book_detail.page_number') }}:123123</h3>
+                        <h3>{{ trans('books/book_detail.author') }}: Gai Gao</h3>
+                        <h3>{{ trans('books/book_detail.status') }}: AAAAAA</h3>
+                        <h3>{{ trans('books/book_detail.page_number') }}:123123</h3>
                         <div class="row">
                             <div class="col-3">
-                                <h2>{{ trans('book_detail/book_detail.rating') }}</h2>
+                                <h2>{{ trans('books/book_detail.rating') }}</h2>
                             </div>
                             <div class="col-9 st_star">
                                 <span class="fa fa-star checked"></span>
@@ -31,7 +31,7 @@
                                 <span class="fa fa-star"></span>
                             </div>
                         </div>
-                        <h3>{{ trans('book_detail/book_detail.like') }} : 2356616</h3>
+                        <h3>{{ trans('books/book_detail.like') }} : 2356616</h3>
                         <button type="button" class="btn_borrow">Borrow</button>
                     </div>
                 </div>
@@ -47,47 +47,47 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h3 class="font_h3">{{ trans('book_detail/book_detail.comment') }}</h3>
+                    <h3 class="font_h3">{{ trans('books/book_detail.comment') }}</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h3 class="gs_title">{{ trans('book_detail/book_detail.other') }}</h3>
+                    <h3 class="gs_title">{{ trans('books/book_detail.other') }}</h3>
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="book_item">
                                 <img src="image/9.jpg" alt="#">
                                 <h5>Conan - thám tử lừng danh đại danh đỉnh đỉnh</h5>
                                 
-                                <a href="" class="read_more">{{ trans('book_detail/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
+                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="book_item">
                                 <img src="image/9.jpg" alt="#">
                                 <h5>Dooms Day</h5>
-                                <a href="" class="read_more">{{ trans('book_detail/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
+                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="book_item">
                                 <img src="image/9.jpg" alt="#">
                                 <h5>The Huricane</h5>
-                                <a href="" class="read_more">{{ trans('book_detail/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
+                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="book_item">
                                 <img src="image/9.jpg" alt="#">
                                 <h5>Star Wars</h5>
-                                <a href="" class="read_more">{{ trans('book_detail/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
+                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="book_item">
                                 <img src="image/9.jpg" alt="#">
                                 <h5>Star Wars</h5>
-                                <a href="" class="read_more">{{ trans('book_detail/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
+                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
                             </div>
                         </div>
                     </div>
@@ -97,4 +97,3 @@
     </section>
     <!-- Detail book end-->
 @endsection
-

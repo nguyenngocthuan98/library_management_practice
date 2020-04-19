@@ -1,6 +1,7 @@
 <?php
  
 return [
+	'title_header' => 'Book',
 	'read_more' => 'Read More',
 	'search' => 'Search',
 	'categories' => 'Categories',
@@ -14,5 +15,4 @@ return [
 	'option' => 'Option',
 	'edit' => 'Edit',
 	'delete' => 'Delete',
-	
 ];

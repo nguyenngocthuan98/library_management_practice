@@ -10,5 +10,4 @@ return [
     'register' => 'Register',
     'ex_name' => 'Name',
     'ex_password' => 'Password',
-
 ];

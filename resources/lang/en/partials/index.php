@@ -5,5 +5,4 @@ return [
     'search' => 'Search',
     'categories' => 'Categories',
     'title_header' => 'Home',
-
 ];

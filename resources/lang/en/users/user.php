@@ -1,8 +1,9 @@
 <?php 
 
 return [
-	'title' => 'User',
+	'title_header' => 'User',
 	'add_new' => 'Add New User',
+	'search' => 'Search',
 	'id' => 'ID',
 	'name' => 'Name',
 	'birth' => 'Birth',
@@ -14,5 +15,4 @@ return [
 	'option' => 'Option',
 	'edit' => 'Edit',
 	'delete' => 'Delete',
-	
 ];

@@ -12,5 +12,4 @@ return [
 	'role' => 'Role',
 	'cancel' => 'Cancel',
 	'edit' => 'Edit',
-	
 ];
