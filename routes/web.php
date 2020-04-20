@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('publishers/publisher');
 });
 
 Route::group(['namespace' => 'Auth'],function(){

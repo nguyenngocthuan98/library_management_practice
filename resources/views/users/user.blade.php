@@ -1,12 +1,26 @@
 @extends('master')
 
-@section('title_header', trans('books/edit_book.title_header'))
+@section('title_header', trans('users/user.title_header'))
 
 @section('main')
 
 <section class="book_section">
-         <div class="container list_book">
-            <button type="button" class="btn_new">{{ trans('users/user.add_new') }}<button>
+     <div class="container list_book">
+        <div class="row">
+            <div class="col-9">
+                <button type="button" class="btn_new">{{ trans('users/user.add_new') }}</button>
+            </div>
+            <div class="col-3">
+                <div id="stickySidebar">
+                    <div class="widget_item">
+                        <form class="search_widget">
+                            <input type="text">
+                            <button> {{ trans('users/user.search') }} </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
             <table class="table table-striped text_table">
                 <thead>
                     <tr>
@@ -30,6 +44,7 @@
                         <td scope="row">02022002</td>
                         <td scope="row">Gao@gao.com</td>
                         <td scope="row">16 Gao, Gao Tiger, city Gao</td>
+                        <td scope="row">Amin</td>
                         <td>
                             <button class="btn_edit" title="Edit" type="submit" value="Edit">{{ trans('users/user.edit') }}</button>
                             <button class="btn_delete" title="Delete" type="submit" value="Delete">{{ trans('users/user.delete') }}</button>
@@ -69,5 +84,3 @@
     </section>
     
 @endsection
-
-    

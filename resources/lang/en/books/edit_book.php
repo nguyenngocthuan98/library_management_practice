@@ -11,5 +11,4 @@ return [
 	'author' => 'Author',
 	'cancel' => 'Cancel',
 	'add' => 'Add',
-	
 ];

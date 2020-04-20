@@ -151,6 +151,7 @@ button.btn_borrow {
 .text_table{
     color: white;
     background: linear-gradient(to right, #330d38 0%, #190d36 100%);
+    text-align: center;
 }
 .page_info{
     color: white;
@@ -215,7 +216,8 @@ button.btn_borrow {
     color: white;   
     margin-left: 20%;
     font-weight: 700;
-    width: 80px;
+    width: 90px;
+    border-radius: 3px;
 }
 .btn_book_edit{
     background: #6f2b95;
@@ -225,7 +227,8 @@ button.btn_borrow {
     color: white;   
     margin-left: 40%;
     font-weight: 700;
-    width: 80px;
+    width: 90px;
+    border-radius: 3px;
 }
 .btn_book_add{
     background: #6f2b95;
@@ -235,7 +238,8 @@ button.btn_borrow {
     color: white;   
     margin-left: 40%;
     font-weight: 700;
-    width: 80px;
+    width: 90px;
+    border-radius: 3px;
 }
 /* detail book */
 .book_detail_page{
@@ -327,4 +331,9 @@ div.register_section div.row {
     background: #6f2b95;
     margin: 20px;
     float: right;
+}
+/* author */
+.group_section{
+    padding: 150px 0;
+    background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
 }
