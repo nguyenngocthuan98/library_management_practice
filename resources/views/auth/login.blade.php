@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -20,6 +20,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
+                            {{-- email --}}
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('auth/login.email_address') }}</label>
                                 <div class="col-md-6">
@@ -32,6 +33,7 @@
                                     @enderror
                                 </div>
                             </div>
+                            {{-- password --}}
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('auth/login.password') }}</label>
                                 <div class="col-md-6">
@@ -43,27 +45,26 @@
                                     @enderror
                                 </div>
                             </div>
+                            {{-- remember --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
                                         <label class="form-check-label" for="remember">
                                            {{ trans('auth/login.remember_me') }}
                                         </label>
                                     </div>
                                 </div>
                             </div>
+                            {{-- button login --}}
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn_login">
                                         {{ trans('auth/login.btn_login') }}
                                     </button>
-                                    @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('register') }}">
                                             {{ trans('auth/login.register') }}
                                         </a>
-                                    @endif
                                 </div>
                             </div>
                         </form>

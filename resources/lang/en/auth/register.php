@@ -7,7 +7,7 @@ return [
     'birth' => 'Birth',
     'email_address' => 'E-Mail Address',
     'password' => 'Password',
-    'confirm_password' => 'Confirm Password',	
+    'confirm_password' => 'Confirm Password',
     'gender' => 'Gender',
     'address' => 'Address',
     'phone' => 'Phone',
@@ -22,4 +22,5 @@ return [
     'ex_password' => 'Password',
     'ex_confirm_password' => 'Confirm Password',
     'ex_email_address' => 'E-Mail Address',
+    'login' => 'Login',
 ];
