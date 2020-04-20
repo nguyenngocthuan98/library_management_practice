@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Authenticator
 Route::group(['namespace' => 'Auth'],function(){
     Route::get('/login', 'LoginController@index')->name('login');
     Route::post('/login', 'LoginController@login');
@@ -21,4 +22,26 @@ Route::group(['namespace' => 'Auth'],function(){
     Route::post('/register', 'RegisterController@create');
 });
 
+//Home
 Route::get('/', 'HomeController@index')->name('home');
+
+//Book
+Route::resource('books', 'BookController');
+
+//Search
+Route::get('home/search/{key}', 'HomeController@search');
+
+
+//Author
+// Route::resource('authors', 'AuthorController');
+
+//Punlisher
+// Route::resource('publishers', 'PublisherController');
+
+//Category
+// Route::resource('categories', 'CategoryController');
+
+//Back
+Route::get('back', function(){
+    return redirect()->back();
+})->name('back');

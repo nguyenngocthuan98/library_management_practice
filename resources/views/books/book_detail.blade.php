@@ -58,7 +58,7 @@
                             <div class="book_item">
                                 <img src="image/9.jpg" alt="#">
                                 <h5>Conan - thám tử lừng danh đại danh đỉnh đỉnh</h5>
-                                
+
                                 <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </section>
     <!-- Detail book end-->

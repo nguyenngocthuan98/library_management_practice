@@ -11,7 +11,7 @@ $factory->define(Book::class, function (Faker $faker) use ($status) {
         'name_book' => $faker->name,
         'status' => $status[rand(0,2)],
         'page_number' => 6999,
-        'image' => 'images/products/9.jpg',
+        'image' => 'image/9.jpg',
         'description' => $faker->text($maxNbChars = 2000),
         'id_category' => rand(1,20),
         'id_publisher' => rand(1,50),

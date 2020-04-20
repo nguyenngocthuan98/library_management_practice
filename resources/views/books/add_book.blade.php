@@ -9,10 +9,10 @@
         <div class="page_info">
             <h2>{{ trans('books/add_book.add_book') }}</h2>
         </div>
-        <form method="GET" action="">
+        <form method="POST" action="{{ route('books.store') }}">
             <div class="form-group edit_book">
                 <label >{{ trans('books/add_book.name_book') }}</label>
-                <input class="form-control"  placeholder="Name book">
+                <input class="form-control"  placeholder="Name book" name="name_book">
                 <label>{{ trans('books/add_book.upload_image') }}</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -25,15 +25,15 @@
                     </div>
                 </div>
                 <label >{{ trans('books/add_book.category') }}</label>
-                <input class="form-control" placeholder="Category">
+                <input class="form-control" placeholder="Category" name="id_category">
                 <label >{{ trans('books/add_book.page_number') }}</label>
-                <input class="form-control" placeholder="Page number">
+                <input class="form-control" placeholder="Page number" name="page_number">
                 <label >{{ trans('books/add_book.publisher') }}</label>
-                <input class="form-control" placeholder="Publisher">
+                <input class="form-control" placeholder="Publisher" name="id_publisher">
                 <label >{{ trans('books/add_book.author') }}</label>
-                <input class="form-control" placeholder="Author">
+                <input class="form-control" placeholder="Author" name="id_author">
                 <div class="form-group edit_btn">
-                    <button class="btn_book_cancel" type="submit" class="btn-primary">{{ trans('books/add_book.cancel') }}</button>
+                    <a href="{{ route('back')}}}"><button class="btn_book_cancel">{{ trans('books/add_book.cancel') }}</button></a>
                     <button class="btn_book_add" type="submit" class="btn-primary">{{ trans('books/add_book.add') }}</button>
                 </div>
             </div>
