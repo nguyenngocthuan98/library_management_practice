@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class HomeController extends Controller
 {
@@ -14,6 +16,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $take = config('setting.take-book');
+        $find = request()->only('action', 'key');
+        if ($find && $find['action'] == 'search') {
+            //search
+            $bookhomes = DB::table('books')->where('name_book' ,'like', '%'.$find['key'].'%')->orderBy('name_book','ASC')->take($take)->get();
+        } else {
+            //View all
+            $bookhomes = Book::orderBy('name_book','ASC')->take($take)->get();
+        }
+        return view('home', ['bookhomes' => $bookhomes]);
     }
 }
