@@ -28,9 +28,6 @@ Route::get('/', 'HomeController@index')->name('home');
 //Book
 Route::resource('books', 'BookController');
 
-//Search
-Route::get('home/search/{key}', 'HomeController@search');
-
 //Back
 Route::get('back', function(){
     return redirect()->back();
@@ -38,9 +35,9 @@ Route::get('back', function(){
 
 //User
 Route::resource('users', 'UsersController');
-Route::get('users/search/{key}', 'UserController@search'); 
 
 //Author
 Route::resource('authors', 'AuthorController');
-Route::get('authors/search/{key}', 'AuthController@search'); 
 
+//Publisher
+Route::resource('publishers', 'PublisherController');

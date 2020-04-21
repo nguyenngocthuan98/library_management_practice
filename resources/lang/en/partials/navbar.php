@@ -15,4 +15,5 @@ return [
     'logout' => 'Logout',
     'hi' => 'Hi ',
     'more' => 'More...',
+    'user' => 'User',
 ];
