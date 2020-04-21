@@ -40,3 +40,7 @@ Route::get('back', function(){
 Route::resource('users', 'UsersController');
 Route::get('users/search/{key}', 'UserController@search'); 
 
+//Author
+Route::resource('authors', 'AuthorController');
+Route::get('authors/search/{key}', 'AuthController@search'); 
+

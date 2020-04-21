@@ -14,7 +14,7 @@
                 <label >{{ trans('authors/add_author.name') }}</label>
                 <input class="form-control"  placeholder="{{ trans('authors/add_author.add_name') }}">
                 <div class="form-group edit_btn">
-                    <button class="btn_book_cancel" type="submit" >{{ trans('authors/add_author.cancel') }}</button>
+                    <button class="btn_book_cancel" type="submit" ><a href="{{ route('back') }}">{{ trans('authors/add_author.cancel') }}</a></button>
                     <button class="btn_book_add" type="submit">{{ trans('authors/add_author.add') }}</button>
                 </div>
             </div>

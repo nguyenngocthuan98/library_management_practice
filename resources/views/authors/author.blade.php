@@ -4,21 +4,28 @@
 
 @section('main')
 
-<section class="author_section">
+<section class="group_section">
     <div class="container list_author">
         <div class="row">
             <div class="col-9">
-                <button class="btn_new">{{ trans('authors/author.add_new') }}</button>
+                <button class="btn_new"><a href="{{ url('authors/create') }}">{{ trans('authors/author.add_new') }}</a></button>
             </div>
             <div class="col-3">
-                <div id="stickySidebar">
+                <div class="search-author">
+                    <form class="search_widget" action="{{ url('authors') }}" method="GET">
+                        <input type="hidden" name="action" value="search">
+                        <input type="text" name="key" id="input" class="form-control" value="" placeholder="Search Computer ...">
+                        <button type="submit">{{ trans('authors/author.search') }}</button>
+                    </form>
+                </div>
+                <!-- <div id="stickySidebar">
                     <div class="widget_item">
                         <form class="search_widget">
                             <input type="text">
                             <button> {{ trans('authors/author.search') }} </button>
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
             <table class="table table-striped text_table group_table">
@@ -26,35 +33,26 @@
                 <tr>
                     <th scope="col">{{ trans('authors/author.id') }}</th>
                     <th scope="col">{{ trans('authors/author.name') }}</th>
-                    <th scope="col">{{ trans('authors/author.option') }}</th>
+                    <th class="opt_auth" scope="col">{{ trans('authors/author.option') }}</th>
                 </tr>
             </thead>
+            <?php  $i=1 ?>
+            @foreach ($author as $data_author)
             <tbody>
                 <tr>
-                    <td scope="row">1</td>
-                    <td scope="row"><a class="book_detail" href="">Gao Supper proooooooooooooooooooooooooo</a></td>
+                    <td scope="row"><?php echo $i++; ?></td>
+                    <td scope="row">{{ $data_author->name_author}}</td>
                     <td>
-                        <button class="btn_edit" title="Edit" type="submit" value="Edit">{{ trans('authors/author.edit') }}</button>
-                        <button class="btn_delete" title="Delete" type="submit" value="Delete">{{ trans('authors/author.delete') }}</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">1</td>
-                    <td scope="row"><a class="book_detail" href="">Gao</a></td>
-                    <td>
-                        <button class="btn_edit" title="Edit" type="submit" value="Edit">{{ trans('users/user.edit') }}</button>
-                        <button class="btn_delete" title="Delete" type="submit" value="Delete">{{ trans('users/user.delete') }}</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">1</td>
-                    <td scope="row"><a class="book_detail" href="">Gao</a></td>
-                    <td>
-                        <button class="btn_edit" title="Edit" type="submit" value="Edit">{{ trans('users/user.edit') }}</button>
-                        <button class="btn_delete" title="Delete" type="submit" value="Delete">{{ trans('users/user.delete') }}</button>
+                        <button class="btn_edit" title="Edit" type="submit" value="Edit"><a href="{{ url('authors/'.$data_author->id.'/edit')}}">{{ trans('authors/author.edit') }}</a></button>
+                        <form class="set_form" action="{{ url("authors/$data_author->id") }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('delete') }}
+                            <button class="btn_delete" type="submit" title="Delete">{{ trans('authors/author.delete') }}</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>
+            @endforeach 
         </table>
     </div>
 </section>
