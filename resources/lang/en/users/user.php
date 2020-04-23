@@ -4,6 +4,7 @@ return [
 	'title_header' => 'User',
 	'add_new' => 'Add New User',
 	'search' => 'Search',
+	'search_user' => 'Search User ...',
 	'id' => 'ID',
 	'name' => 'Name',
 	'birth' => 'Birth',

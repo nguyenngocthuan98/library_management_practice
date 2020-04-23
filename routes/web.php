@@ -35,3 +35,8 @@ Route::get('home/search/{key}', 'HomeController@search');
 Route::get('back', function(){
     return redirect()->back();
 })->name('back');
+
+//User
+Route::resource('users', 'UsersController');
+Route::get('users/search/{key}', 'UserController@search'); 
+
