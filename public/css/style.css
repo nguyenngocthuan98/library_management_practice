@@ -179,6 +179,10 @@ button.btn_borrow {
     font-weight: 700;
     width: 60px;
 }
+button.btn_edit a {
+    color: white;
+    text-decoration: none;
+}
 .btn_delete{
     background: red;
     border: none;
@@ -204,6 +208,10 @@ th.width_t{
 }
 .btn_new:hover{
     background: #b01ba5
+}
+.btn_new a {
+    color: white;
+    text-decoration: none;
 }
 .edit_book{
     background: white;
@@ -351,4 +359,12 @@ div.register_section div.row {
 .group_section{
     padding: 150px 0;
     background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
+}
+th.opt_auth{
+    width: 250px;
+}
+form.set_form {
+    width: 77px;
+    float: right;
+    margin-right: 37px;
 }

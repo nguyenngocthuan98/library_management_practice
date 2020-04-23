@@ -12,9 +12,9 @@
         <form method="GET" action="">
             <div class="form-group edit_book">
                 <label >{{ trans('authors/edit_author.name') }}</label>
-                <input class="form-control">
+                <input class="form-control" value="{{ $author->name_author }}">
                 <div class="form-group edit_btn">
-                    <button class="btn_book_cancel" type="submit">{{ trans('authors/edit_author.cancel') }}</button>
+                    <button class="btn_book_cancel" type="submit"><a href="{{ route('back') }}">{{ trans('authors/edit_author.cancel') }}</a></button>
                     <button class="btn_book_add" type="submit">{{ trans('authors/edit_author.edit') }}</button>
                 </div>
             </div>
