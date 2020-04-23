@@ -18,17 +18,9 @@
                         <button type="submit">{{ trans('authors/author.search') }}</button>
                     </form>
                 </div>
-                <!-- <div id="stickySidebar">
-                    <div class="widget_item">
-                        <form class="search_widget">
-                            <input type="text">
-                            <button> {{ trans('authors/author.search') }} </button>
-                        </form>
-                    </div>
-                </div> -->
             </div>
         </div>
-            <table class="table table-striped text_table group_table">
+        <table class="table table-striped text_table group_table">
             <thead>
                 <tr>
                     <th scope="col">{{ trans('authors/author.id') }}</th>
