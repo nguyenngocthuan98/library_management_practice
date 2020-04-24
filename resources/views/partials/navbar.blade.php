@@ -7,11 +7,11 @@
         <div class="collapse navbar-collapse nav_left" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active li_left">
+                    <a class="nav-link" href="{{ route('home') }}">{{ trans('partials/navbar.home') }}</a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link" href="{{ route('books.index') }}">{{ trans('partials/navbar.book') }}
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{-- {{ route('authors.index') }} --}}" class="nav-link">{{ trans('partials/navbar.author') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ trans('partials/navbar.category') }}</a>
@@ -23,7 +23,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="{{-- {{ route('publishers.index') }} --}}" class="nav-link">{{ trans('partials/navbar.publisher') }}</a>
+                    <a href=" {{ route('authors.index') }} " class="nav-link">{{ trans('partials/navbar.author') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href=" {{ route('publishers.index') }} " class="nav-link">{{ trans('partials/navbar.publisher') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link">{{ trans('partials/navbar.user')}}</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">{{ trans('partials/navbar.us') }}</a>

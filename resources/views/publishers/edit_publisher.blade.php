@@ -14,9 +14,9 @@
                 <label >{{ trans('publishers/edit_publisher.name') }}</label>
                 <input class="form-control" >
                 <label >{{ trans('publishers/edit_publisher.email') }}</label>
-                <input class="form-control">
+                <input class="form-control" value="{{ $publisher->email }}">
                 <label >{{ trans('publishers/edit_publisher.address') }}</label>
-                <input class="form-control">
+                <input class="form-control" value="{{ $publisher->address }}">
                 <div class="form-group edit_btn">
                     <button class="btn_book_cancel" type="submit" class="btn-primary">{{ trans('publishers/edit_publisher.cancel') }}</button>
                     <button class="btn_book_add" type="submit" class="btn-primary">{{ trans('publishers/edit_publisher.edit') }}</button>

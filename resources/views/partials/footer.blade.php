@@ -1,7 +1,7 @@
     <!-- Footer section -->
     <footer class="footer_section">
         <div class="container">
-            <a href="#" class="footer_logo"><h1>book(logo)</h1>
+            <a href="#" class="footer_logo"><h1>{{ trans('partials/footer.library_management')}}</h1>
                 <img src="./image/logo.png" alt="">
             </a>
             <div class="footer_set">

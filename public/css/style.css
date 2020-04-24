@@ -143,6 +143,10 @@ button.btn_borrow {
     font-weight: 700;
     padding: 0px 10px;
 }
+a.footer_logo{
+    text-decoration: none;
+    color: white;
+}
 /* Add Delete Edit book */
 
 .list_book{
@@ -196,7 +200,6 @@ button.btn_edit a {
 th.width_t{
     width: 160px;
 }
-
 .btn_new{
     font-weight: 700;
     border: none;
