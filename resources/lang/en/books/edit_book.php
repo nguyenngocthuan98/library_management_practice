@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 	'title_header' => 'Edit Book',
@@ -11,4 +11,7 @@ return [
 	'author' => 'Author',
 	'cancel' => 'Cancel',
 	'add' => 'Add',
+	'description' => 'Description',
+	'choosefile' => 'Choose file',
+	'upload' => 'Upload',
 ];

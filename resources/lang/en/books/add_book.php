@@ -1,5 +1,5 @@
 <?php
- 
+
 return [
 	'title_header' => 'Add New Book',
 	'add_book' => 'Add New Book',
@@ -11,4 +11,6 @@ return [
 	'author' => 'Author',
 	'cancel' => 'Cancel',
 	'add' => 'Add',
+	'description' => 'Description',
+	'error_require' => ' There were some problems with your input.',
 ];
