@@ -27,14 +27,14 @@
                     @foreach($listbook as $book)
                     <tbody>
                         <tr>
-                            <td scope="row"><a class="book_detail" href="{{-- {{ route('books.show') }} --}}">{{ $book->name_book }}</a></td>
+                            <td scope="row"><a class="book_detail" href="{{ route('books.show',$book->id) }}">{{ $book->name_book }}</a></td>
                             <td scope="row"><image class="image_list" src="{{ $book->image }}" alt="#"></image></td>
                             <td scope="row">{{ $book->id_category }}</td>
                             <td scope="row">{{ $book->id_author }}</td>
                             <td scope="row">{{ $book->id_publisher }}</td>
                             <td scope="row">{{ BookHelper::getRole($book->name_book) }}</td>
                             <td>
-                                <button class="btn_edit" title="Edit" type="submit" value="Edit"> {{ trans('books/book.edit') }} </button>
+                                <a href="{{ route('books.edit',$book->id) }}"><button class="btn_edit" title="Edit" type="submit" value="Edit"> {{ trans('books/book.edit') }} </button></a>
                                 <form action="{{ route('books.destroy',$book->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use Validator;
 use Auth;
+use App\Http\Requests\BookRequest;
+
 class BookController extends Controller
 {
     /**
@@ -29,14 +31,25 @@ class BookController extends Controller
     }
     /**
      * Store a newly created resource in storage.
-     *
+     * Status have 3 state: 1 is Still, 0 is Borrowed, another is Unknown
+     * Status auto create with 1: Still
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $req)
     {
-        // Book::create();
-        // return redirect('books.book_list');
+        $book = [
+            'name_book' => $req->name_book,
+            'status' => 1,
+            'page_nunmber' => $req->page_nunmber,
+            'image' => $req->image,
+            'description' => $req->description,
+            'id_categoty' => $req->id_categoty,
+            'id_publisher' => $req->id_publisher,
+            'id_author' => $req->id_author,
+        ];
+        $book = Book::create($book);
+        return redirect()->route('books.index')->with('success','New book added successfully!');
     }
     /**
      * Display the specified resource.
@@ -46,7 +59,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('books.book_detail', compact('id'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -56,7 +69,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('books.edit_book', compact('id'));
     }
     /**
      * Update the specified resource in storage.
@@ -65,9 +78,10 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BookRequest $req, Book $idbook)
     {
-        //
+        $idbook->update($req->all());
+        return redirect()->route('books.index')->with('success','Update successfully!');
     }
     /**
      * Remove the specified resource from storage.

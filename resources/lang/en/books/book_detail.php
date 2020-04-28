@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return [
-	'title_header' => 'Book Detail'
+	'title_header' => 'Book Detail',
 	'book_detail' => 'Book Detail',
 	'rating' => 'Rating',
 	'author' => 'Author',
