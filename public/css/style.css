@@ -371,3 +371,55 @@ form.set_form {
     float: right;
     margin-right: 37px;
 }
+/* Borrow  */
+.borrow_lb{
+    color: white;
+}
+.page_info_b{
+    padding-bottom: 30px;
+}
+button.btn_borrow_b {
+    color: white;
+    background: #6f2b95;
+    border: none;
+    padding: 5px 16px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 75px;
+}
+.btn_borrow_b:hover{
+    background: #b01ba5;
+}
+button.btn_accept {
+    background: #714195;
+    border: none;
+    padding: 3px 5px;
+    width: 60px;
+}
+.btn_accept a{
+    color: white;
+    text-decoration: none;
+}
+button.btn_reject {
+    background: #f34423;
+    border: none;
+    padding: 3px 5px;
+    width: 60px;
+}
+.btn_reject a{
+    color: white;
+    text-decoration: none;
+}
+button.btn_pay{
+    background: #3c8c1f;
+    border: none;
+    padding: 3px 5px;
+    width: 60px;
+}
+.btn_pay a{
+    color: white;
+    text-decoration: none;
+}
+th.witdth_lb {
+    width: 240px;
+}
