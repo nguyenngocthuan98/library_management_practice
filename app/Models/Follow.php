@@ -18,7 +18,7 @@ class Follow extends Model
      *
      * @var array
      */
-    protected $filllable = [
+    protected $fillable = [
         'id_user',
         'id_author',
     ];

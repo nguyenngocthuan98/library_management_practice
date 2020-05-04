@@ -18,7 +18,7 @@ class Rate extends Model
      *
      * @var array
      */
-    protected $filllable = [
+    protected $fillable = [
         'rate', 'like',
         'comment',
         'id_user',

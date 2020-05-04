@@ -18,7 +18,7 @@ class Publisher extends Model
      *
      * @var array
      */
-    protected $filllable = [
+    protected $fillable = [
         'name_publisher',
         'email',
         'address',
