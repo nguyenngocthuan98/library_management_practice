@@ -18,7 +18,7 @@ class Borrow extends Model
      *
      * @var array
      */
-    protected $filllable = [
+    protected $fillable = [
         'date_pay',
         'accept',
         'id_user',
