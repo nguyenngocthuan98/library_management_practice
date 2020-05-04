@@ -32,7 +32,7 @@
                             <td scope="row">{{ $book->id_category }}</td>
                             <td scope="row">{{ $book->id_author }}</td>
                             <td scope="row">{{ $book->id_publisher }}</td>
-                            <td scope="row">{{ BookHelper::getRole($book->name_book) }}</td>
+                            <td scope="row">{{ BookHelper::getRole($book->status) }}</td>
                             <td>
                                 <a href="{{ route('books.edit',$book->id) }}"><button class="btn_edit" title="Edit" type="submit" value="Edit"> {{ trans('books/book.edit') }} </button></a>
                                 <form action="{{ route('books.destroy',$book->id) }}" method="POST">

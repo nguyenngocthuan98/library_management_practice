@@ -10,15 +10,15 @@
             <div class="row">
                 <div class="col-6">
                     <div class="book_preview">
-                        <img src="image/9.jpg" alt="">
+                        <img src="{{ $thisbook->image }}" alt="">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="gs_meta">
-                        <h3 class="gs_title">Final Appocalipse 2.1</h3>
-                        <h3>{{ trans('books/book_detail.author') }}: Gai Gao</h3>
-                        <h3>{{ trans('books/book_detail.status') }}: AAAAAA</h3>
-                        <h3>{{ trans('books/book_detail.page_number') }}:123123</h3>
+                        <h3 class="gs_title"><b>{{ $thisbook->name_book }}</b></h3>
+                        <h3>{{ trans('books/book_detail.author') }}: {{ $thisbook->id_author }}</h3>
+                        <h3>{{ trans('books/book_detail.status') }}: {{ BookHelper::getRole($thisbook->status) }}</h3>
+                        <h3>{{ trans('books/book_detail.page_number') }}:{{ $thisbook->page_number }}</h3>
                         <div class="row">
                             <div class="col-3">
                                 <h2>{{ trans('books/book_detail.rating') }}</h2>
@@ -31,68 +31,42 @@
                                 <span class="fa fa-star"></span>
                             </div>
                         </div>
-                        <h3>{{ trans('books/book_detail.like') }} : 2356616</h3>
-                        <button type="button" class="btn_borrow">Borrow</button>
+                        <h3>{{ trans('books/book_detail.like') }} : {{-- {{ $cmt->id_book }} --}}</h3>
+                        <a href="{{-- {{ route('borrows.show') }} --}}"><button type="button" class="btn_borrow">{{ trans('books/book_detail.btn_borrow') }}</button></a>
                     </div>
                 </div>
             </div>
+            {{-- description --}}
             <div class="row">
                 <div class="col-xl-12 col-lg-8 col-md-7 book_content">
-                    <h3 class="font_h3">Book</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus.</p>
-                    <h3 class="font_h3">Conclusion</h3>
-                    <p>Nulla ut maximus mauris. Sed malesuada at sapien sed euismod. Vestibulum pharetra in sem id laoreet. Cras metus ex, placerat nec justo quis, luctus posuere ex. Vivamus volutpat nibh ac sollicitudin imperdiet. Donec scelerisque lorem sodales odio ultricies, nec rhoncus ex lobortis. Vivamus tincidunt sit amet sem id varius. Donec ele-mentum aliquet tortor. Curabitur justo mi, efficitur sed eros aliquet, dictum molestie eros. Nullam scelerisque convallis gravida. Morbi id lorem accumsan, scelerisque enim laoreet, sollicitudin neque. Vivamus volutpat nibh ac sollicitudin imperdiet. Donec scelerisque lorem sodales odio ultricies, nec rhoncus ex lobortis. Vivamus tincidunt sit amet sem id varius. Donec ele-mentum aliquet tortor. Curabitur justo mi, efficitur sed eros aliqueDonec vitae tellus sodales, congue augue at, biben-dum justo. Pellentesque non dolor et magna volutpat pharetra eget vel ligula. Maecenas facilisis vestibulum mattis. Sed sagittis gravida urna. Cras nec mi risus.
-                    </p>
+                    <h3 class="font_h3">{{ trans('books/edit_book.description') }}</h3>
+                    <p>{{ $thisbook->description }}</p>
                 </div>
             </div>
+            {{-- list comment --}}
             <div class="row">
                 <div class="col-12">
                     <h3 class="font_h3">{{ trans('books/book_detail.comment') }}</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="gs_title">{{ trans('books/book_detail.other') }}</h3>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="book_item">
-                                <img src="image/9.jpg" alt="#">
-                                <h5>Conan - thám tử lừng danh đại danh đỉnh đỉnh</h5>
-                                
-                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="book_item">
-                                <img src="image/9.jpg" alt="#">
-                                <h5>Dooms Day</h5>
-                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="book_item">
-                                <img src="image/9.jpg" alt="#">
-                                <h5>The Huricane</h5>
-                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="book_item">
-                                <img src="image/9.jpg" alt="#">
-                                <h5>Star Wars</h5>
-                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="book_item">
-                                <img src="image/9.jpg" alt="#">
-                                <h5>Star Wars</h5>
-                                <a href="" class="read_more">{{ trans('books/book_detail.read_more') }}  <img src="image/double-arrow.png" alt="#"/></a>
-                            </div>
+                    {{-- @foreach() --}}
+                    <div class="col-md-12 mt-50">
+                        <div class="py-2">
+                            <p class="mb-0 text-primary">
+                                Admin - <span class="text-dark">20:20 20/2/220</span>
+                            </p>
+                            <p class="mb-0">Hello it's so cool</p>
                         </div>
                     </div>
+                    {{-- @endforeach --}}
                 </div>
-            </div> 
+            </div>
+            {{-- comment --}}
+            <form method="POST" action="">
+                @csrf
+                <div class="form-group">
+                    <textarea class="form-control mt-3" name="" id="" rows="7"></textarea>
+                </div>
+                <button type="submit" class="genric-btn success mb-3">{{ trans('books/book_detail.comment') }}</button>
+            </form>
         </div>
     </section>
     <!-- Detail book end-->
