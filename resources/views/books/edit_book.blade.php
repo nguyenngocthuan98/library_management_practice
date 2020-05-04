@@ -37,11 +37,11 @@
                 <label >{{ trans('books/add_book.description') }}</label>
                 <input class="form-control" placeholder="" name="description" value="{{ $idbook->description }}">
                 <div class="form-group edit_btn">
-                    <a href="{{ route('back')}}}"><button class="btn_book_cancel">{{ trans('books/add_book.cancel') }}</button></a>
                     <button class="btn_book_edit" type="submit" class="btn-primary">{{ trans('books/edit_book.add') }}</button>
                 </div>
             </div>
         </form>
+        <a href="{{ route('books.index')}}"><button class="btn_book_cancel">{{ trans('books/add_book.cancel') }}</button></a>
     </div>
 </section>
 

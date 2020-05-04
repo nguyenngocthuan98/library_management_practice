@@ -14,14 +14,14 @@
                         @foreach($bookhomes as $book)
                         <div class="col-lg-4 col-md-6">
                             <div class="book_item">
-                                <img src="image/9.jpg" alt="#"> {{-- <img src="{{ $book->image }}" alt="#"> --}}
+                                <img src="{{ $book->image }}" alt="#">
                                 <h5>{{ $book->name_book }}</h5>
                                 <div class="row">
                                     <div class="col-6">
                                         <button type="button" class="btn_borrow">Borrow</button>
                                     </div>
                                     <div class="col-6">
-                                        <a href="" class="read_more">{{ trans('books/book.read_more') }}<img src="image/double-arrow.png" alt="#"/></a>
+                                        <a href="{{ route('books.show',$book->id) }}" class="read_more">{{ trans('books/book.read_more') }}<img src="image/double-arrow.png" alt="#"/></a>
                                     </div>
                                 </div>
                             </div>

@@ -12,4 +12,5 @@ return [
 	'other' => 'Other',
 	'comment' => 'Comment',
 	'read_more' => 'Read More',
+	'btn_borrow' => 'Borrow',
 ];

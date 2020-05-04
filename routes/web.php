@@ -41,3 +41,6 @@ Route::resource('authors', 'AuthorController');
 
 //Publisher
 Route::resource('publishers', 'PublisherController');
+
+//Borrow
+Route::resource('borrows', 'BorrowController');

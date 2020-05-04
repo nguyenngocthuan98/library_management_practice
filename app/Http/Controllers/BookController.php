@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Rate;
 use Validator;
 use Auth;
 use App\Http\Requests\BookRequest;
@@ -18,7 +19,7 @@ class BookController extends Controller
     {
         $take = config('setting.take-book');
         $listbook = Book::paginate($take);
-        return view('books.book_list',compact('listbook'));
+        return view('books.book_list' ,compact('listbook'));
     }
     /**
      * Show the form for creating a new resource.
@@ -59,7 +60,14 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return view('books.book_detail', compact('id'));
+        $thisbook = Book::findOrFail($id);
+        $cmt = DB::table('rates')->where('id_book', '='.$thisbook)->get();
+        // $bookid = Book::findOrFail($id)->get('id');
+        // $thisbook = DB::table('books')
+        //     ->join('rates', 'rates.id_book', '='.$bookid)
+        //     ->select('rates.comment')
+        //     ->get();
+        return view('books.book_detail', compact('thisbook'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -69,7 +77,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        return view('books.edit_book', compact('id'));
+        $idbook = Book::findOrFail($id);
+        return view('books.edit_book', compact('idbook'));
     }
     /**
      * Update the specified resource in storage.
