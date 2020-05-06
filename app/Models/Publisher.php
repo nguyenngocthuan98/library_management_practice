@@ -34,6 +34,6 @@ class Publisher extends Model
      */
 
     public function book(){
-        return $this->belongsto(Book::class);
+        return $this->hasMany(Book::class, 'id_publisher');
     }
 }

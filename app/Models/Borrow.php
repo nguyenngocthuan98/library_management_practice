@@ -33,12 +33,12 @@ class Borrow extends Model
     /**
      * Relationships
      */
-    public function users(){
-        return $this->hasOne(User::class);
+    public function user(){
+        return $this->belongsto(User::class, 'id_user');
     }
 
-    public function books(){
-        return $this->hasOne(Book::class);
+    public function book(){
+        return $this->belongsto(Book::class, 'id_book');
     }
 
 }

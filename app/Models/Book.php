@@ -37,23 +37,27 @@ class Book extends Model
     /**
      * Relationships
      */
-    public function authors(){
-        return $this->hasOne(Author::class);
+    public function author(){
+        return $this->belongsto(Author::class, 'id_author');
     }
 
-    public function publishers(){
-        return $this->hasOne(Publisher::class);
+    public function publisher(){
+        return $this->belongsto(Publisher::class, 'id_publisher');
     }
 
-    public function categories(){
-        return $this->hasOne(Category::class);
+    public function category(){
+        return $this->belongsto(Category::class, 'id_category');
     }
 
-    public function borrows(){
-        return $this->hasOne(Borrow::class);
+    public function rates(){
+        return $this->hasMany(Rate::class, 'id_book');
     }
 
-    public function rate(){
-        return $this->belongsto(Rate::class);
+    public function likes(){
+        return $this->hasMany(Rate::class, 'id_book');
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class, 'id_book');
     }
 }

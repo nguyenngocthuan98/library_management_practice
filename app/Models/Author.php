@@ -30,11 +30,11 @@ class Author extends Model
     /**
      * Relationships
      */
-    public function book(){
-        return $this->belongsto(Book::class);
+    public function books(){
+        return $this->hasMany(Book::class, 'id_author');
     }
 
-    public function follow(){
-        return $this->belongsto(Follow::class);
+    public function follows(){
+        return $this->hasMany(Follow::class, 'id_author');
     }
 }

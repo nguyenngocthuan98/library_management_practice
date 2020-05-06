@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Follow extends Model
+class Like extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'follows';
+    protected $table = 'rates';
 
     /**
      * The attributes that are mass assignable.
@@ -19,12 +19,13 @@ class Follow extends Model
      * @var array
      */
     protected $fillable = [
+        'like',
         'id_user',
-        'id_author',
+        'id_book',
     ];
 
     /**
-     * Disable timestamps
+     * Enable timestamps
      */
     public $timestamps = true;
 
@@ -35,7 +36,7 @@ class Follow extends Model
         return $this->belongsto(User::class, 'id_user');
     }
 
-    public function author(){
-        return $this->belongsto(Author::class, 'id_author');
+    public function book(){
+        return $this->belongsto(Book::class, 'id_book');
     }
 }
