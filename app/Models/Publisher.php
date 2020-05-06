@@ -25,15 +25,15 @@ class Publisher extends Model
     ];
 
     /**
-     * Disable timestamps
+     * Enable timestamps
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * Relationships
      */
 
-    public function book(){
+    public function books(){
         return $this->hasMany(Book::class, 'id_publisher');
     }
 }
