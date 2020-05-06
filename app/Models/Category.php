@@ -21,7 +21,6 @@ class Category extends Model
     protected $fillable = [
         'name_category',
         'id_parent',
-        'path',
     ];
 
     /**
@@ -32,8 +31,8 @@ class Category extends Model
     /**
      * Relationships
      */
-    public function book(){
-        return $this->belongsto(Book::class);
+    public function books(){
+        return $this->hasMany(Book::class, 'id_category');
     }
 
     public function children(){
