@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Publisher;
+use App\Models\Follow;
 use Illuminate\Database\Seeder;
 
-class PublisherTableSeeder extends Seeder
+class FollowTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class PublisherTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Publisher::class, 20)->create();
+        factory(Follow::class, 20)->create();
     }
 }
