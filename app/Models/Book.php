@@ -30,23 +30,23 @@ class Book extends Model
     ];
 
     /**
-     * Disable timestamps
+     * Enable timestamps
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * Relationships
      */
     public function author(){
-        return $this->belongsto(Author::class, 'id_author');
+        return $this->belongsTo(Author::class, 'id_author');
     }
 
     public function publisher(){
-        return $this->belongsto(Publisher::class, 'id_publisher');
+        return $this->belongsTo(Publisher::class, 'id_publisher');
     }
 
     public function category(){
-        return $this->belongsto(Category::class, 'id_category');
+        return $this->belongsTo(Category::class, 'id_category');
     }
 
     public function rates(){

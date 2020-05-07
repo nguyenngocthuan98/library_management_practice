@@ -24,9 +24,9 @@ class Category extends Model
     ];
 
     /**
-     * Disable timestamps
+     * Enable timestamps
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * Relationships

@@ -24,7 +24,7 @@ class Follow extends Model
     ];
 
     /**
-     * Disable timestamps
+     * Enable timestamps
      */
     public $timestamps = true;
 
@@ -32,10 +32,10 @@ class Follow extends Model
      * Relationships
      */
     public function user(){
-        return $this->belongsto(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function author(){
-        return $this->belongsto(Author::class, 'id_author');
+        return $this->belongsTo(Author::class, 'id_author');
     }
 }
