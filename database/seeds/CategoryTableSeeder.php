@@ -22,12 +22,12 @@ class CategoryTableSeeder extends Seeder
                 ]
             ],
             1 => [
-                0 => 'cultural - society',
+                0 => 'Cultural - society',
                 1 => [
-                    1 => 'politics - law',
-                    2 => 'education',
-                    3 => 'culture and arts',
-                    4 => 'social science',
+                    1 => 'Politics - law',
+                    2 => 'Education',
+                    3 => 'Culture and arts',
+                    4 => 'Social science',
                 ]
             ],
             2 => [
