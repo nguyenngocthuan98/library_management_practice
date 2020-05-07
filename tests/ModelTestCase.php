@@ -37,10 +37,10 @@ abstract class ModelTestCase extends TestCase
         Model $model,
         $fillable = [],
         $dates = ['created_at', 'updated_at'],
+        $casts = ['id' => 'int'],
         $hidden = [],
         $guarded = ['*'],
         $visible = [],
-        $casts = ['id' => 'int'],
         $collectionClass = Collection::class,
         $table = null,
         $primaryKey = 'id',
@@ -128,7 +128,7 @@ abstract class ModelTestCase extends TestCase
         if (is_null($owner)) {
             $owner = $related->getKeyName();
         }
-
         $this->assertEquals($owner, $relation->getOwnerKeyName());
     }
 }
+
