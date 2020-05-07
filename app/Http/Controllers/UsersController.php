@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +26,7 @@ class UsersController extends Controller
         }else{
             //For all user
             $users = DB::table('users')->orderBy('id','ASC')->get();
-        }  
+        }
         return view('users.user', ['users' => $users]);
     }
 
@@ -36,9 +36,8 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
-        $user = User::all(); 
-        
+    {
+        $user = User::all();
         return view('users.add_user',['user' => $user]);
     }
 
