@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 
 class Borrow extends Model
