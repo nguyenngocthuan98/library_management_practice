@@ -6,6 +6,9 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AuthorController;
+use App\Http\Requests\AuthorRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class AuthorController extends Controller
 {
     /**
@@ -15,19 +18,18 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $filters = request()->only('action', 'key');
+        $paginate = config('setting.paginate');
+        $filters = request()->only('key');
 
-        if($filters && $filters['action'] == 'search'){
+        if($filters){
             // for search
-            $author = DB::table('authors')->where('name_author', 'like', '%'.$filters['key'].'%')
-                                        ->orderBy('id','ASC')->get();
+            $author = Author::where('name_author', 'like', '%'.$filters['key'].'%')->orderBy('id','DESC')->paginate($paginate);
         }
         else{
-            
-            $author = DB::table('authors')->orderBy('id','ASC')->get();
+            $author = Author::orderBy('id','DESC')->paginate($paginate);
         }
-        
-        return view('authors.author', ['author' => $author]);
+
+        return view('authors.author', compact('author'));
     }
 
     /**
@@ -46,9 +48,14 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorRequest $req)
     {
-        //
+        $author = [
+            'name_author' => $req->name_author,
+        ];
+        Author::create($author);
+
+        return redirect()->back()->with(['success'=> 'Success' ]);
     }
 
     /**
@@ -70,8 +77,13 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        $author = Author::where('id', $id)->first();
-        return view('authors.edit_author',['author' => $author]);
+        try {
+            $author = Author::where('id', $id)->first();
+
+            return view('authors.edit_author', ['author' => $author]);
+        } catch (ModelNotFoundException $e) {
+            throw new \Exception($e->getMessage());
+        }
     }
 
     /**
@@ -81,9 +93,14 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AuthorRequest $req, $id)
     {
-        //
+        $author = [
+            'name_author' => $req->name_author,
+        ];
+        Author::where('id', '=', $id)->update($author);
+
+        return redirect()->back()->with(['success'=> 'Success' ]);
     }
 
     /**
@@ -96,5 +113,5 @@ class AuthorController extends Controller
     {
         $author = Author::destroy($id);
         return redirect('authors');
-    }   
+    }
 }

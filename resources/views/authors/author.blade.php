@@ -8,13 +8,13 @@
     <div class="container list_author">
         <div class="row">
             <div class="col-9">
-                <button class="btn_new"><a href="{{ url('authors/create') }}">{{ trans('authors/author.add_new') }}</a></button>
+                <a href="{{ url('authors/create') }}"><button class="btn_new">{{ trans('authors/author.add_new') }}</button></a>
             </div>
             <div class="col-3">
                 <div class="search-author">
                     <form class="search_widget" action="{{ url('authors') }}" method="GET">
                         <input type="hidden" name="action" value="search">
-                        <input type="text" name="key" id="input" class="form-control" value="" placeholder="Search Computer ...">
+                        <input type="text" name="key" id="input" class="form-control" value="" placeholder="{{ trans('authors/author.search') }}">
                         <button type="submit">{{ trans('authors/author.search') }}</button>
                     </form>
                 </div>
@@ -44,9 +44,10 @@
                     </td>
                 </tr>
             </tbody>
-            @endforeach 
+            @endforeach
         </table>
+        {{ $author->links() }}
     </div>
 </section>
-    
+
 @endsection
