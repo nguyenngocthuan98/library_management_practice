@@ -1,41 +1,41 @@
 body{
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .bg_tool{
     background: #081624;
     padding: 20px;
 }
 .nav_left{
-	margin-left: 15%;
-	font-weight: 700;
+    margin-left: 15%;
+    font-weight: 700;
 }
 .li_left{
-	margin-left: 25px;
+    margin-left: 25px;
 }
 .carou_top{
-	margin-top: 80px; 
+    margin-top: 80px; 
 }
 img {
-	max-width: 100%;
+    max-width: 100%;
 }
 .book_section{
-	padding: 100px 0;
-	background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
+    padding: 100px 0;
+    background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
 }
 .book_item{
-	color: white;
+    color: white;
     margin-top: 20px;
 }
 .book_item .read_more{
-	font-size: 15px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 700;
     font-style: italic;
     color: #b01ba5;
 }
 .categories-widget{
-	    background: #34164b;
+        background: #34164b;
     padding: 55px 0 25px;
 }
 .search_widget input {
@@ -78,14 +78,14 @@ img {
     color: white;
 }
 .widget_item{
-	margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 .widget_item ul li a{
-	color: #68647d;
-	font-weight: 700;
+    color: #68647d;
+    font-weight: 700;
 }
 .widget_item ul li a:hover{
-	color: #af50a5;
+    color: #af50a5;
 }
 .content_center{
     margin-top: 50px;
@@ -183,7 +183,7 @@ a.footer_logo{
     font-weight: 700;
     width: 60px;
 }
-button.btn_edit a {
+a.btn_edit  {
     color: white;
     text-decoration: none;
 }
@@ -223,6 +223,8 @@ th.width_t{
 }
 .edit_btn{
     padding:inherit;
+    color: white;
+    text-decoration: none;
 }
 .btn_book_cancel{
     background: red;
@@ -234,6 +236,10 @@ th.width_t{
     font-weight: 700;
     width: 90px;
     border-radius: 3px;
+}
+a.btn_book_cancel{
+    color: white;
+    text-decoration: none;
 }
 .btn_book_edit{
     background: #6f2b95;
