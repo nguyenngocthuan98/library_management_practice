@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Author;
+use App\Models\Rate;
+use App\Models\Category;
+use App\Models\Like;
+use App\Models\Publisher;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
@@ -54,7 +60,7 @@ class Book extends Model
     }
 
     public function likes(){
-        return $this->hasMany(Rate::class, 'id_book');
+        return $this->hasMany(Like::class, 'id_book');
     }
 
     public function comments(){

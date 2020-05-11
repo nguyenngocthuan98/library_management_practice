@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Book;
+use App\Models\Follow;
 use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model

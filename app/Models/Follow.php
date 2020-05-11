@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Author;
 use Illuminate\Database\Eloquent\Model;
 
 class Follow extends Model
