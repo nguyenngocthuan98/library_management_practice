@@ -8,7 +8,9 @@
     <div class="container list_author">
         <div class="row">
             <div class="col-9">
-                <a href="{{ url('authors/create') }}"><button class="btn_new">{{ trans('authors/author.add_new') }}</button></a>
+                @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
+                    <a href="{{ url('authors/create') }}"><button class="btn_new">{{ trans('authors/author.add_new') }}</button></a>
+                @endif
             </div>
             <div class="col-3">
                 <div class="search-author">
@@ -25,7 +27,9 @@
                 <tr>
                     <th scope="col">{{ trans('authors/author.id') }}</th>
                     <th scope="col">{{ trans('authors/author.name') }}</th>
-                    <th class="opt_auth" scope="col">{{ trans('authors/author.option') }}</th>
+                    @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
+                        <th class="opt_auth" scope="col">{{ trans('authors/author.option') }}</th>
+                    @endif
                 </tr>
             </thead>
             <?php  $i=1 ?>
@@ -34,14 +38,16 @@
                 <tr>
                     <td scope="row"><?php echo $i++; ?></td>
                     <td scope="row">{{ $data_author->name_author}}</td>
-                    <td>
-                        <a class="btn_edit" title="Edit" type="submit" value="Edit" href="{{ url('authors/'.$data_author->id.'/edit')}}">{{ trans('authors/author.edit') }}</a>
-                        <form class="set_form" action="{{ url("authors/$data_author->id") }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button class="btn_delete" type="submit" title="Delete">{{ trans('authors/author.delete') }}</button>
-                        </form>
-                    </td>
+                    @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
+                        <td>
+                            <a href="{{ url('authors/'.$data_author->id.'/edit')}}"><button class="btn_edit" title="Edit" type="submit" value="Edit">{{ trans('authors/author.edit') }}</button></a>
+                            <form class="set_form" action="{{ url("authors/$data_author->id") }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('delete') }}
+                                <button class="btn_delete" type="submit" title="Delete">{{ trans('authors/author.delete') }}</button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             </tbody>
             @endforeach

@@ -36,16 +36,30 @@
             </thead>
             @php($i = 1)
             @foreach($users as $data_user)
-            <tbody> 
+            <tbody>
                 <tr>
                     <td scope="row"><?php echo $i++; ?></td>
                     <td scope="row">{{ $data_user->name }}</td>
                     <td scope="row">{{ $data_user->birth }}</td>
-                    <td scope="row">{{ $data_user->gender }}</td>
+                    <td scope="row">
+                        @if ($data_user->gender == \App\Models\User::MALE)
+                            {{ trans('users/user.male') }}
+                        @elseif ($data_user->gender == \App\Models\User::FEMALE)
+                            {{ trans('users/user.female') }}
+                        @else
+                            {{ trans('users/user.unknown') }}
+                        @endif
+                    </td>
                     <td scope="row">{{ $data_user->phone }}</td>
                     <td scope="row">{{ $data_user->email }}</td>
                     <td scope="row">{{ $data_user->address }}</td>
-                    <td scope="row">{{ $data_user->role }}</td>
+                    <td scope="row">
+                        @if ($data_user->role == \App\Models\User::ADMIN)
+                            {{ trans('users/user.admin') }}
+                        @else
+                            {{ trans('users/user.user') }}
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ url('users/'.$data_user->id.'/edit')}}" class="btn_edit edit_user" title="Edit" type="submit" value="Edit">{{ trans('users/user.edit') }}</a>
 
@@ -61,5 +75,5 @@
         </table>
     </div>
 </section>
-    
+
 @endsection

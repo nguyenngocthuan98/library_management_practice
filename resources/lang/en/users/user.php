@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 	'title_header' => 'User',
@@ -16,4 +16,9 @@ return [
 	'option' => 'Option',
 	'edit' => 'Edit',
 	'delete' => 'Delete',
+	'admin' => 'Admin',
+	'user' => 'User',
+	'male' => 'Male',
+	'female' => 'Female',
+	'unknown' => 'Unknown',
 ];

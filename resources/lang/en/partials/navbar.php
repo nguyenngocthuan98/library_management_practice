@@ -16,4 +16,5 @@ return [
     'hi' => 'Hi ',
     'more' => 'More...',
     'user' => 'User',
+    'ad-manage' => 'Admin Manage',
 ];

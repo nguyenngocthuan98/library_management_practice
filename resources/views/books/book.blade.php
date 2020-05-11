@@ -14,7 +14,7 @@
                         @foreach($bookhomes as $book)
                         <div class="col-lg-4 col-md-6">
                             <div class="book_item">
-                                <img src="{{ $book->image }}" alt="#">
+                                <a href="{{ route('books.show',$book->id) }}"><img src="{{ $book->image }}" alt="#"></a>
                                 <h5><a class="text_book" href="{{ route('books.show',$book->id) }}">{{ $book->name_book }}</a></h5>
                                 <div class="row">
                                     <div class="col-6">
