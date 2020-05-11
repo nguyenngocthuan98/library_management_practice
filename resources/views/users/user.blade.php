@@ -4,7 +4,7 @@
 
 @section('main')
 
-<section class="book_section">
+<section class="group_section">
     <div class="container-fluid list_book">
         <div class="row">
             <div class="col-9">

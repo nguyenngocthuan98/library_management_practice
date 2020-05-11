@@ -1,4 +1,4 @@
-body{
+btbody{
     margin: 0;
     padding: 0;
 }
@@ -20,7 +20,7 @@ img {
     max-width: 100%;
 }
 .book_section{
-    padding: 100px 0;
+    padding: 150px 0;
     background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
 }
 .book_item{
@@ -133,15 +133,22 @@ img {
     font-weight: 600;
     opacity: 0.5;
 }
-button.btn_borrow:hover {
-    background: #8a0f79;
+a.btn_borrow:hover {
+    background: white;
+    color: #b01ba5;
 }
-button.btn_borrow {
+a.text_book {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+a.btn_borrow {
     border: none;
     background: #ab4c9e;
+    padding: 5px 10px;
+    text-decoration: none;
     color: white;
     font-weight: 700;
-    padding: 0px 10px;
 }
 a.footer_logo{
     text-decoration: none;
@@ -277,7 +284,7 @@ a.btn_book_cancel{
 .book_detail_page{
     background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
     color: #68647d;
-    padding-top: 70px;
+    padding-top: 80px;
 }
 .gs_title{
     font-size: 50px;
@@ -428,4 +435,19 @@ button.btn_pay{
 }
 th.witdth_lb {
     width: 240px;
+}
+/* button like and dislike */
+a.btn_like {
+    background: #ab4d9e;
+    border: solid 1px #ff08dd;
+    border-radius: 8px;
+    color: white;
+    padding: 5px 10px;
+}
+a.btn_dislike {
+    background: #ab4d9e;
+    border: solid 1px #ff08dd;
+    border-radius: 8px;
+    color: white;
+    padding: 5px 10px;
 }

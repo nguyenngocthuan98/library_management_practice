@@ -30,7 +30,7 @@
                 
                 <div class="form-group edit_btn">
                     <a class="btn_book_cancel" href="{{ route('publishers.index') }}" type="submit">{{ trans('publishers/edit_publisher.cancel') }}</a>
-                    <button class="btn_book_add" type="submit">{{ trans('publishers/edit_publisher.edit') }}</button>
+                    <a class="btn_book_add" type="submit">{{ trans('publishers/edit_publisher.edit') }}</a>
                 </div>
             </div>
         </form>

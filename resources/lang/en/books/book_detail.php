@@ -13,4 +13,5 @@ return [
 	'comment' => 'Comment',
 	'read_more' => 'Read More',
 	'btn_borrow' => 'Borrow',
+	'text_comment' => 'Comment ...',
 ];

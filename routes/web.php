@@ -44,3 +44,6 @@ Route::resource('publishers', 'PublisherController');
 
 //Borrow
 Route::resource('borrows', 'BorrowController');
+
+//Comment
+Route::post('comment/{id}', 'CommentController@comment')->name('comment.post');
