@@ -14,7 +14,7 @@
             @method('PUT')
             <div class="form-group edit_book">
                 <label >{{ trans('books/edit_book.name_book') }}</label>
-                <input class="form-control"  placeholder="" name="name_book" value="{{ $idbook->name_book }}">
+                <input class="form-control" name="name_book" value="{{ $idbook->name_book }}">
                 <label>{{ trans('books/edit_book.upload_image') }}</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -27,21 +27,21 @@
                     </div>
                 </div>
                 <label >{{ trans('books/edit_book.category') }}</label>
-                <input class="form-control" placeholder="" name="id_category" value="{{ $idbook->id_category }}">
+                <input class="form-control" name="id_category" value="{{ $idbook->category->name_category }}">
                 <label >{{ trans('books/edit_book.page_number') }}</label>
-                <input class="form-control" placeholder="" name="page_number" value="{{ $idbook->page_number }}">
+                <input class="form-control" name="page_number" value="{{ $idbook->page_number }}">
                 <label >{{ trans('books/edit_book.publisher') }}</label>
-                <input class="form-control" placeholder="" name="id_publisher" value="{{ $idbook->id_publisher }}">
+                <input class="form-control" name="id_publisher" value="{{ $idbook->publisher->name_publisher }}">
                 <label >{{ trans('books/edit_book.author') }}</label>
-                <input class="form-control" placeholder="" name="id_author" value="{{ $idbook->id_author }}">
+                <input class="form-control" name="id_author" value="{{ $idbook->id_author }}">
                 <label >{{ trans('books/add_book.description') }}</label>
-                <input class="form-control" placeholder="" name="description" value="{{ $idbook->description }}">
+                <input class="form-control" name="description" value="{{ $idbook->description }}">
                 <div class="form-group edit_btn">
-                    <button class="btn_book_edit" type="submit" class="btn-primary">{{ trans('books/edit_book.add') }}</button>
+                    <a href="{{ route('books.index')}}" class="btn_book_cancel">{{ trans('books/edit_book.cancel') }}</a>
+                    <a class="btn_book_edit" type="submit" class="btn-primary">{{ trans('books/edit_book.edit') }}</a>
                 </div>
             </div>
         </form>
-        <a href="{{ route('books.index')}}"><button class="btn_book_cancel">{{ trans('books/add_book.cancel') }}</button></a>
     </div>
 </section>
 

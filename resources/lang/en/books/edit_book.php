@@ -10,7 +10,7 @@ return [
 	'publisher' => 'Publisher',
 	'author' => 'Author',
 	'cancel' => 'Cancel',
-	'add' => 'Add',
+	'edit' => 'edit',
 	'description' => 'Description',
 	'choosefile' => 'Choose file',
 	'upload' => 'Upload',
