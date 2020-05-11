@@ -35,7 +35,7 @@
                     <td scope="row"><?php echo $i++; ?></td>
                     <td scope="row">{{ $data_author->name_author}}</td>
                     <td>
-                        <button class="btn_edit" title="Edit" type="submit" value="Edit"><a href="{{ url('authors/'.$data_author->id.'/edit')}}">{{ trans('authors/author.edit') }}</a></button>
+                        <a class="btn_edit" title="Edit" type="submit" value="Edit" href="{{ url('authors/'.$data_author->id.'/edit')}}">{{ trans('authors/author.edit') }}</a>
                         <form class="set_form" action="{{ url("authors/$data_author->id") }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}

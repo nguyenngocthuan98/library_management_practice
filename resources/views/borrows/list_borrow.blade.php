@@ -13,7 +13,7 @@
                 <div class="search-author">
                     <form class="search_widget" action="" method="GET">
                         <input type="hidden" name="action" value="search">
-                        <input type="text" name="key" id="input" class="form-control" value="" placeholder="Search Computer ...">
+                        <input type="text" name="key" id="input" class="form-control" value="" placeholder="{{ trans('borrows/list_borrow.search') }}">
                         <button type="submit">{{ trans('borrows/list_borrow.search') }}</button>
                     </form>
                 </div>

@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             AuthorTableSeeder::class,
             PublisherTableSeeder::class,
             BookTableSeeder::class,
+            CommentTableSeeder::class,
+            BorrowTableSeeder::class,
         ]);
     }
 }

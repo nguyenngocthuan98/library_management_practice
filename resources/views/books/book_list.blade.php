@@ -20,7 +20,7 @@
                             <th scope="col"> {{ trans('books/book.author') }} </th>
                             <th scope="col"> {{ trans('books/book.publisher') }} </th>
                             <th scope="col"> {{ trans('books/book.status') }} </th>
-                            <th class="width_t" cope="col"> {{ trans('books/book.option') }} </th>
+                            <th class="width_t" scope="col"> {{ trans('books/book.option') }} </th>
                         </tr>
                     </thead>
                     {{-- data below --}}
