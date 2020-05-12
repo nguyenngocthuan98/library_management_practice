@@ -26,6 +26,11 @@ Route::group(['namespace' => 'Auth'],function(){
 Route::group(['namespace' => 'Admin', 'middleware' => 'is_admin', 'prefix' => 'admin'], function() {
     Route::get('statistical', 'HomeController@index')->name('admin.home.index');
     Route::get('borrows', 'BorrowController@index')->name('admin.borrow.index');
+    Route::get('borrows/accept/{id}', 'BorrowController@accept')->name('admin.borrow.accept');
+    Route::get('borrows/deny/{id}', 'BorrowController@deny')->name('admin.borrow.deny');
+    Route::get('borrows/return/{id}', 'BorrowController@pay')->name('admin.borrow.pay');
+    Route::get('borrow/destroy/{id}', 'BorrowController@destroy')->name('admin.borrow.destroy');
+    Route::get('borrow/action/{id}', 'BorrowController@action')->name('admin.borrow.action');
 });
 
 //Home
@@ -49,5 +54,5 @@ Route::post('comment/{id}', 'CommentController@comment')->name('comment.post');
 //User Borrow
 Route::get('borrow/{id}', 'BorrowController@show')->name('borrow.show');
 Route::post('borrow/{id}', 'BorrowController@confirm')->name('borrow.confirm');
-Route::get('borrow', 'BorrowController@index')->name('user.borrow.index');
+Route::get('borrows', 'BorrowController@index')->name('user.borrow.index');
 Route::get('borrow/destroy/{id}', 'BorrowController@destroy')->name('user.borrow.destroy');

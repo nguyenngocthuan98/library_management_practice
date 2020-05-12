@@ -60,12 +60,16 @@
                     </td>
                     <td>
                         @if($borrow->accept == App\Models\Borrow::WAITING)
-                            <a class="btn btn-success" title="accept" href="">{{ trans('borrows/list_borrow.accept') }}</a>
-                            <a class="btn btn-danger" href="">{{ trans('borrows/list_borrow.deny') }}</a>
+                            <a class="btn btn-success" href="{{ route('admin.borrow.accept', ['id' => $borrow->id]) }}" title="accept" href="">{{ trans('borrows/list_borrow.accept') }}</a>
+                            <a class="btn btn-danger" href="{{ route('admin.borrow.deny', ['id' => $borrow->id]) }}">{{ trans('borrows/list_borrow.deny') }}</a>
                         @elseif($borrow->accept == App\Models\Borrow::BORROWING)
-                            <a class="btn btn-warning" href="">{{ trans('borrows/list_borrow.return') }}</a>
+                            <a class="btn btn-warning" href="{{ route('admin.borrow.pay', ['id' => $borrow->id]) }}">{{ trans('borrows/list_borrow.return') }}</a>
                         @else
-                            <a class="btn btn-danger" href="">{{ trans('borrows/list_borrow.delete') }}</a>
+                            <form action="{{ route('user.borrow.destroy',$borrow->id) }}" method="GET">
+                            @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" title="Delete" type="submit" value="Delete"> {{ trans('books/book.delete') }} </button>
+                            </form>
                         @endif
                     </td>
                 </tr>

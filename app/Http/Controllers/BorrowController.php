@@ -7,6 +7,9 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\ Auth;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+
 class BorrowController extends Controller
 {
     public function __construct()
@@ -111,8 +114,13 @@ class BorrowController extends Controller
      */
     public function destroy($id)
     {
-        Borrow::destroy($id);
+        try{
+            $borrow = Borrow::findOrFail($id);
+            $borrow->destroy($id);
 
-        return redirect()->back()->with(['deleteSuccess' => 'success']);
+            return redirect()->back()->with(['deleteSuccess' => 'success']);
+        } catch (ModelNotFoundException $e) {
+            throw new Exception($e->getMesseage());
+        }
     }
 }
