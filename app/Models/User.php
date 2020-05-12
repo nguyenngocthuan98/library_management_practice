@@ -12,6 +12,13 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    const ADMIN = 1;
+    const USER = 0;
+
+    const FEMALE = 1;
+    const MALE = 2;
+    const UNKNOW = 0;
+
     use Notifiable;
 
     /**

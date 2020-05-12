@@ -11,6 +11,14 @@ use App\Http\Controllers\UsersController;
 class UsersController extends Controller
 {
     /**
+     * Prevent unauthorized access by URL
+     */
+    public function __construct()
+    {
+        $this->middleware('is_admin');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

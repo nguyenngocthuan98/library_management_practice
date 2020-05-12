@@ -22,16 +22,17 @@ Route::group(['namespace' => 'Auth'],function(){
     Route::post('/register', 'RegisterController@create');
 });
 
+//Admin:
+Route::group(['namespace' => 'Admin', 'middleware' => 'is_admin', 'prefix' => 'admin'], function() {
+    Route::get('statistical', 'HomeController@index')->name('admin.home.index');
+    Route::resource('users', 'UsersController');
+});
+
 //Home
 Route::get('/', 'HomeController@index')->name('home');
 
 //Book
 Route::resource('books', 'BookController');
-
-//Back
-Route::get('back', function(){
-    return redirect()->back();
-})->name('back');
 
 //User
 Route::resource('users', 'UsersController');

@@ -23,17 +23,16 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href=" {{ route('authors.index') }} " class="nav-link">{{ trans('partials/navbar.author') }}</a>
+                    <a href="{{ route('authors.index') }}" class="nav-link">{{ trans('partials/navbar.author') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a href=" {{ route('publishers.index') }} " class="nav-link">{{ trans('partials/navbar.publisher') }}</a>
+                    <a href="{{ route('publishers.index') }}" class="nav-link">{{ trans('partials/navbar.publisher') }}</a>
                 </li>
+                @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">{{ trans('partials/navbar.user')}}</a>
+                    <a href="{{ route('admin.home.index') }}" class="nav-link">{{ trans('partials/navbar.ad-manage') }}</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">{{ trans('partials/navbar.us') }}</a>
-                </li>
+                @endif
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

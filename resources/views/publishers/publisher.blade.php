@@ -13,7 +13,9 @@
         @endif
         <div class="row">
             <div class="col-9">
-                <a href="{{ route('publishers.create') }}"><button class="btn_new">{{ trans('publishers/publisher.add_new') }}</button></a>
+                @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
+                    <a href="{{ route('publishers.create') }}"><button class="btn_new">{{ trans('publishers/publisher.add_new') }}</button></a>
+                @endif
             </div>
             <div class="col-3">
                 <div class="search-publisher">
@@ -32,7 +34,9 @@
                     <th scope="col">{{ trans('publishers/publisher.name') }}</th>
                     <th scope="col">{{ trans('publishers/publisher.email') }}</th>
                     <th scope="col">{{ trans('publishers/publisher.address') }}</th>
-                    <th class="width_t" scope="col">{{ trans('publishers/publisher.option') }}</th>
+                    @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
+                        <th class="width_t" scope="col">{{ trans('publishers/publisher.option') }}</th>
+                    @endif
                 </tr>
             </thead>
             <?php $i=1 ?>
@@ -43,15 +47,17 @@
                     <td scope="row">{{ $data_publisher->name_publisher}}</td>
                     <td scope="row">{{ $data_publisher->email}}</td>
                     <td scope="row">{{ $data_publisher->address}}</td>
-                    <td>
-                        <a class="btn_edit edit_user" title="Edit" type="submit" value="Edit" href="{{ route('publishers.edit',$data_publisher->id) }}">{{ trans('publishers/publisher.edit') }}</a>
-                        <form action="{{ route('publishers.destroy',$data_publisher->id) }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button class="btn_delete delete_user" title="Delete" type="submit" value="Delete">{{ trans('publishers/publisher.delete') }}</button>
-                        </form>
-                        
-                    </td>
+                    @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
+                        <td>
+                            <a class="btn_edit edit_user" title="Edit" type="submit" value="Edit" href="{{ route('publishers.edit',$data_publisher->id) }}">{{ trans('publishers/publisher.edit') }}</a>
+                            <form action="{{ route('publishers.destroy',$data_publisher->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('delete') }}
+                                <button class="btn_delete delete_user" title="Delete" type="submit" value="Delete">{{ trans('publishers/publisher.delete') }}</button>
+                            </form>
+
+                        </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
@@ -59,5 +65,5 @@
         {{ $publisher->links() }}
     </div>
 </section>
-    
+
 @endsection
