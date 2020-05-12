@@ -13,14 +13,14 @@
                 <table class="table table-striped text_table">
                     <thead>
                         <tr>
-                            <th scope="col"> Directory </th>
-                            <th scope="col"> Total </th>
-                            <th scope="col"> Option </th>
+                            <th scope="col"> {{ trans('borrows/borrow.directory') }} </th>
+                            <th scope="col"> {{ trans('borrows/borrow.total') }} </th>
+                            <th scope="col"> {{ trans('borrows/borrow.option') }} </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td scope="row">User</td>
+                            <td scope="row">{{ trans('users/user.title_header') }}</td>
                             <td scope="row">{{ $userTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('users.index') }}">
@@ -29,7 +29,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">Book</td>
+                            <td scope="row">{{ trans('books/book.title_header') }}</td>
                             <td scope="row">{{ $bookTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('books.index') }}">
@@ -38,16 +38,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">Borrow</td>
+                            <td scope="row">{{ trans('borrows/borrow.title_header') }}</td>
                             <td scope="row">{{ $borrowTotal }}</td>
                             <td scope="row">
-                                <a href="#">
+                                <a href="{{ route('admin.borrow.index') }}">
                                     <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">Author</td>
+                            <td scope="row">{{ trans('authors/author.title_header') }}</td>
                             <td scope="row">{{ $authorTotal }}</td>
                             <td scope="row">
                                 <a href="{{route('authors.index')}}">
@@ -56,7 +56,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">Category</td>
+                            <td scope="row">{{ trans('categories/category.title_header') }}</td>
                             <td scope="row">{{ $categoryTotal }}</td>
                             <td scope="row">
                                 <a href="#">
@@ -65,7 +65,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">Publisher</td>
+                            <td scope="row">{{ trans('publishers/publisher.title_header') }}</td>
                             <td scope="row">{{ $publisherTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('publishers.index') }}">

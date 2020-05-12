@@ -28,6 +28,11 @@
                 <li class="nav-item">
                     <a href="{{ route('publishers.index') }}" class="nav-link">{{ trans('partials/navbar.publisher') }}</a>
                 </li>
+                @if (auth()->check() && Auth::user())
+                <li class="nav-item">
+                    <a href="{{ route('user.borrow.index') }}" class="nav-link">{{ trans('partials/navbar.list_borrow') }}</a>
+                </li>
+                @endif
                 @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
                 <li class="nav-item">
                     <a href="{{ route('admin.home.index') }}" class="nav-link">{{ trans('partials/navbar.ad-manage') }}</a>
