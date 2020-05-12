@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Publisher;
 use App\Http\Requests\PublisherRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Repositories\Publisher\PublisherRepositoryInterface;
 
 class PublisherController extends Controller
 {
+    protected $publisherRepo;
+
+    public function __construct(PublisherRepositoryInterface $publisher)
+    {
+        $this->publisherRepo = $publisher;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,12 +29,10 @@ class PublisherController extends Controller
 
         if($filters && $filters['action'] == 'search'){
             // for search
-            $publisher = Publisher::where('name_publisher', 'like', '%'.$filters['key'].'%')
-                                        ->orderBy('id','ASC')->paginate($pagi);
-        }
+            $publisher = $this->publisherRepo->getPublisherBySearchName($filters['key'], $pagi);        }
         else{
             
-            $publisher = Publisher::orderBy('id','ASC')->paginate($pagi);
+            $publisher = $this->publisherRepo->paginate('id','ASC', $pagi);
         }
         
         return view('publishers.publisher', ['publisher' => $publisher]);
@@ -56,7 +62,7 @@ class PublisherController extends Controller
             'email' => $request->email,
             'address' => $request->address,
         ];
-        Publisher::create($publisher);
+        $this->publisherRepo->create($publisher);
 
         return redirect()->back()->with(['create_success' => trans('controller/publisher.create_success') ]);
         } catch (ModelNotFoundException $e) {
@@ -84,7 +90,7 @@ class PublisherController extends Controller
     public function edit($id)
     {
         try {
-            $publisher = Publisher::where('id', $id)->first();
+            $publisher = $this->publisherRepo->FindOrFail($id);
             
             return view('publishers.edit_publisher',compact('publisher'));
         } catch (ModelNotFoundException $e) {
@@ -107,7 +113,7 @@ class PublisherController extends Controller
             'email' => $request->email,
             'address' => $request->address,
         ];
-        Publisher::where('id', '=', $id)->update($publisher);
+        $this->publisherRepo->update($id, $publisher);
 
         return redirect()->back()->with(['update_success' => trans('controller/publisher.update_success') ]);
         } catch (ModelNotFoundException $e) {
@@ -123,8 +129,11 @@ class PublisherController extends Controller
      */
     public function destroy($id)
     {
-        $publisher = Publisher::destroy($id);
-
-        return redirect('publishers')->with(['delete_success' => trans('controller/publisher.delete_success') ]);
+        try {
+            $publisher = $this->publisherRepo->delete($id);
+            return redirect('publishers')->with(['delete_success' => trans('controller/publisher.delete_success') ]);
+        } catch (ModelNotFoundException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }
