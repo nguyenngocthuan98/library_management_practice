@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="book_preview">
-                        <img src="{{-- {{ $thisbook->image }} --}}" alt="">
+                        <a href=""><img src="{{ $thisbook->image }}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-6">

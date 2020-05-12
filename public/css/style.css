@@ -451,3 +451,9 @@ a.btn_dislike {
     color: white;
     padding: 5px 10px;
 }
+.col-3 .search-publisher {
+    padding-bottom: 50px;
+}
+.col-3 .search-author {
+    padding-bottom: 50px;
+}
