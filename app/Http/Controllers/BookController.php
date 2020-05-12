@@ -7,9 +7,17 @@ use App\Models\Rate;
 use Validator;
 use Auth;
 use App\Http\Requests\BookRequest;
+use App\Repositories\Book\BookRepositoryInterface;
 
 class BookController extends Controller
 {
+    protected $bookRepo;
+
+    public function __construct(BookRepositoryInterface $book)
+    {
+        $this->bookRepo = $book;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +26,7 @@ class BookController extends Controller
     public function index()
     {
         $take = config('setting.take-book');
-        $listbook = Book::paginate($take);
+        $listbook = $this->bookRepo->paginate('id','DESC',$take);
         return view('books.book_list' ,compact('listbook'));
     }
     /**
@@ -49,7 +57,7 @@ class BookController extends Controller
             'id_publisher' => $req->id_publisher,
             'id_author' => $req->id_author,
         ];
-        $book = Book::create($book);
+        $book = $this->bookRepo->create($book);
         return redirect()->route('books.index')->with('success','New book added successfully!');
     }
     /**
@@ -60,13 +68,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $thisbook = Book::findOrFail($id);
-        $cmt = DB::table('rates')->where('id_book', '='.$thisbook)->get();
-        // $bookid = Book::findOrFail($id)->get('id');
-        // $thisbook = DB::table('books')
-        //     ->join('rates', 'rates.id_book', '='.$bookid)
-        //     ->select('rates.comment')
-        //     ->get();
+        $thisbook = $this->bookRepo->findOrFail($id);
         return view('books.book_detail', compact('thisbook'));
     }
     /**
@@ -77,7 +79,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $idbook = Book::findOrFail($id);
+        $idbook = $this->bookRepo->findOrFail($id);
         return view('books.edit_book', compact('idbook'));
     }
     /**
@@ -100,7 +102,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $book = Book::destroy($id);
+        $book = $this->bookRepo->delete($id);
         return redirect('books');
     }
 }
