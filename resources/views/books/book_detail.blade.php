@@ -34,7 +34,7 @@
                         <h3>{{ trans('books/book_detail.like') }} :123 {{-- {{ $cmt->id_book }} --}}</h3>
                         <div class="row">
                             <div class="col-3">
-                                <a href="{{-- {{ route('borrows.show') }} --}}" type="button" class="btn_borrow">{{ trans('books/book_detail.btn_borrow') }}</a>
+                                <a href="{{ route('borrow.show', ['id' => $thisbook->id]) }}" type="button" class="btn_borrow">{{ trans('books/book_detail.btn_borrow') }}</a>
                             </div>
                             <div class="col-8">
                                 <form method="post" action="">

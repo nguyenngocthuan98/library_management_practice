@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Auth'],function(){
 //Admin:
 Route::group(['namespace' => 'Admin', 'middleware' => 'is_admin', 'prefix' => 'admin'], function() {
     Route::get('statistical', 'HomeController@index')->name('admin.home.index');
-    Route::resource('users', 'UsersController');
+    Route::get('borrows', 'BorrowController@index')->name('admin.borrow.index');
 });
 
 //Home
@@ -43,8 +43,11 @@ Route::resource('authors', 'AuthorController');
 //Publisher
 Route::resource('publishers', 'PublisherController');
 
-//Borrow
-Route::resource('borrows', 'BorrowController');
-
 //Comment
 Route::post('comment/{id}', 'CommentController@comment')->name('comment.post');
+
+//User Borrow
+Route::get('borrow/{id}', 'BorrowController@show')->name('borrow.show');
+Route::post('borrow/{id}', 'BorrowController@confirm')->name('borrow.confirm');
+Route::get('borrow', 'BorrowController@index')->name('user.borrow.index');
+Route::get('borrow/destroy/{id}', 'BorrowController@destroy')->name('user.borrow.destroy');

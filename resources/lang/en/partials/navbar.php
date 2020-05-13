@@ -17,4 +17,5 @@ return [
     'more' => 'More...',
     'user' => 'User',
     'ad-manage' => 'Admin Manage',
+    'list_borrow' => 'Borrow List',
 ];

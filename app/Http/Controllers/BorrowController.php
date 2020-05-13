@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrow;
+use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\ Auth;
 
 class BorrowController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,10 @@ class BorrowController extends Controller
      */
     public function index()
     {
-        return view('borrows.list_borrow');
+        $take = config('setting.paginate');
+        $listborrow = Borrow::where('id_user', '=' , Auth::user()->id)->orderBy('id', 'DESC')->paginate($take);
+
+        return view('borrows.list_borrow', compact('listborrow'));
     }
 
     /**
@@ -45,7 +56,28 @@ class BorrowController extends Controller
      */
     public function show($id)
     {
-        return view('borrows.borrow', compact('id'));
+        $book = Book::findOrFail($id);
+        return view('borrows.show', compact('book'));
+    }
+
+    public function confirm(Request $req, $id)
+    {
+        $date_pay = strtotime($req['date_pay']);
+        $date_borrow = strtotime(date("Y-m-d"));
+
+        if ($date_pay >= $date_borrow) {
+            $borrow = [
+                'date_pay' => $req['date_pay'],
+                'accept' => Borrow::WAITING,
+                'id_user' => auth()->user()->id,
+                'id_book' => $id,
+            ];
+            Borrow::create($borrow);
+
+            return redirect()->back()->with(['borrow-success' => trans('borrows/borrow.success_wait')]);
+        }
+
+        return redirect()->back()->with(['borrow-error' => trans('borrows/borrow.erro_date_value')]);
     }
 
     /**
@@ -79,6 +111,8 @@ class BorrowController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Borrow::destroy($id);
+
+        return redirect()->back()->with(['deleteSuccess' => 'success']);
     }
 }

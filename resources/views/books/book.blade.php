@@ -18,7 +18,7 @@
                                 <h5><a class="text_book" href="{{ route('books.show',$book->id) }}">{{ $book->name_book }}</a></h5>
                                 <div class="row">
                                     <div class="col-6">
-                                        <a type="button" href="" class="btn_borrow">Borrow</a>
+                                        <a type="button" href="{{ route('borrow.show', ['id' => $book->id]) }}" class="btn_borrow">Borrow</a>
                                     </div>
                                     <div class="col-6">
                                         <a href="{{ route('books.show',$book->id) }}" class="read_more">{{ trans('books/book.read_more') }}<img src="image/double-arrow.png" alt="double arrow"/></a>

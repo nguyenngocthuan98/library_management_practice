@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Borrow extends Model
 {
+    const WAITING = 0;
+    const BORROWING = 1;
+    const DECLINED = 2;
+    const RETURN = 3;
+
     /**
      * The table associated with the model.
      *
