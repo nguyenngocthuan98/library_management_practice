@@ -219,7 +219,7 @@ th.width_t{
 .btn_new:hover{
     background: #b01ba5
 }
-.btn_new a {
+a.btn_new {
     color: white;
     text-decoration: none;
 }

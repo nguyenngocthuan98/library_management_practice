@@ -12,33 +12,89 @@
         <form method="POST" action="{{ route('users.store') }}">
             @csrf
             <div class="form-group edit_book">
-                <label >{{ trans('users/add_user.name') }}</label>
-                <input class="form-control"  placeholder="{{ trans('users/add_user.ex_name') }}">
-                <label >{{ trans('users/add_user.birth') }}</label>
-                <input class="form-control" placeholder="{{ trans('users/add_user.ex_birth') }}">
+                @if (session('create_success'))
+                    <div class="alert alert-success mb-0 mt-2" role="alert">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ session('create_success') }}
+                    </div>
+                @endif
+                {{-- name --}}
+                <label for="name" >{{ trans('users/add_user.name') }}</label>
+                @error('name')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input class="form-control" id="name" type="text" name="name" value="{{ old('name') }}" placeholder="{{ trans('users/add_user.ex_name') }}" required autocomplete="name" autofocus>
+                {{-- birth --}}
+                <label for="birth" >{{ trans('users/add_user.birth') }}</label>
+                @error('birth')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input id="birth" type="date" value="{{ old('birth') }}" class="form-control @error('birth') is-invalid @enderror" name="birth" placeholder="{{ trans('users/add_user.ex_birth') }}" autofocus>
+                {{-- gender --}}
                 <label >{{ trans('users/add_user.gender') }}</label>
-                <select class="form-control" >
+                <select class="form-control" name="gender" value="{{ old('gender') }}">
                       <option>0</option>
                       <option>1</option>
                       <option>2</option>
                 </select>
+                {{-- phone --}}
                 <label >{{ trans('users/add_user.phone') }}</label>
-                <input class="form-control" placeholder="{{ trans('users/add_user.ex_phone') }}">
+                @error('phone')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input class="form-control" name="phone" value="{{ old('phone') }}" placeholder="{{ trans('users/add_user.ex_phone') }}">
+                {{-- mail --}}
                 <label >{{ trans('users/add_user.email') }}</label>
-                <input class="form-control" placeholder="{{ trans('users/add_user.ex_email') }}">
+                @error('email')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input class="form-control" name="email" value="{{ old('email') }}" placeholder="{{ trans('users/add_user.ex_email') }}">
+                {{-- address --}}
                 <label >{{ trans('users/add_user.address') }}</label>
-                <input class="form-control" placeholder="{{ trans('users/add_user.ex_address') }}">
+                @error('address')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input class="form-control" name="address" value="{{ old('address') }}" placeholder="{{ trans('users/add_user.ex_address') }}">
+                {{-- role --}}
                 <label >{{ trans('users/add_user.role') }}</label>
-                <select class="form-control" >
+                @error('role')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <select class="form-control" name="role" >
                       <option>0</option>
                       <option>1</option>
                 </select>
-                <label >{{ trans('users/add_user.password') }}</label>
-                <input class="form-control" placeholder="{{ trans('users/add_user.ex_password') }}">
-                <label >{{ trans('users/add_user.confirm_password') }}</label>
-                <input class="form-control" placeholder="{{ trans('users/add_user.ex_confirm_password') }}">
+                {{-- password --}}
+                <label for="password" >{{ trans('users/add_user.password') }}</label>
+                @error('password')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ trans('users/add_user.ex_password') }}" name="password" required autocomplete="new-password">
+                {{-- confirm_password --}}
+                <label for="password-confirm" >{{ trans('users/add_user.confirm_password') }}</label>
+                @error('confirm_password')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <input class="form-control" id="password-confirm" type="password" name="password_confirmation" placeholder="{{ trans('users/add_user.ex_confirm_password') }}" required autocomplete="new-password">
+                {{-- submit --}}
                 <div class="form-group edit_btn">
-                    <button class="btn_book_cancel" > <a href="{{url()->previous()}}">{{ trans('users/add_user.cancel') }}</a></button>
+                    <button class="btn_book_cancel" > <a href="{{ route('users.index') }}">{{ trans('users/add_user.cancel') }}</a></button>
                     <button class="btn_book_add" type="submit">{{ trans('users/add_user.add') }}</button>
                 </div>
             </div>
