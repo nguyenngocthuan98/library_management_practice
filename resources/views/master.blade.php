@@ -5,5 +5,6 @@
         @yield('main')
     </main>
     @include('partials.footer')
+    @yield('javascript')
 </body>
 @include('partials.footer_script')

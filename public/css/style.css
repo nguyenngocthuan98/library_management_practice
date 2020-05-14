@@ -457,3 +457,8 @@ a.btn_dislike {
 .col-3 .search-author {
     padding-bottom: 50px;
 }
+.list_book h1 {
+    color: white;
+    font-weight: 700;
+    padding-bottom: 20px;
+}

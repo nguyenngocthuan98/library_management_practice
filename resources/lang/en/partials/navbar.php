@@ -18,4 +18,5 @@ return [
     'user' => 'User',
     'ad-manage' => 'Admin Manage',
     'list_borrow' => 'Borrow List',
+    'chart' => 'Chart',    
 ];
