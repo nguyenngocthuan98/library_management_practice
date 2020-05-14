@@ -24,7 +24,7 @@
                             <td scope="row">{{ $userTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('users.index') }}">
-                                    <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
+                                    <button class="btn btn-info" title="Edit" type="button"> {{ trans('borrows/borrow.option') }} </button>
                                 </a>
                             </td>
                         </tr>
@@ -33,7 +33,7 @@
                             <td scope="row">{{ $bookTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('books.index') }}">
-                                    <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
+                                    <button class="btn btn-info" title="Edit" type="button"> {{ trans('borrows/borrow.option') }} </button>
                                 </a>
                             </td>
                         </tr>
@@ -42,7 +42,7 @@
                             <td scope="row">{{ $borrowTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('admin.borrow.index') }}">
-                                    <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
+                                    <button class="btn btn-info" title="Edit" type="button"> {{ trans('borrows/borrow.option') }} </button>
                                 </a>
                             </td>
                         </tr>
@@ -51,7 +51,7 @@
                             <td scope="row">{{ $authorTotal }}</td>
                             <td scope="row">
                                 <a href="{{route('authors.index')}}">
-                                    <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
+                                    <button class="btn btn-info" title="Edit" type="button"> {{ trans('borrows/borrow.option') }} </button>
                                 </a>
                             </td>
                         </tr>
@@ -60,7 +60,7 @@
                             <td scope="row">{{ $categoryTotal }}</td>
                             <td scope="row">
                                 <a href="#">
-                                    <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
+                                    <button class="btn btn-info" title="Edit" type="button"> {{ trans('borrows/borrow.option') }} </button>
                                 </a>
                             </td>
                         </tr>
@@ -69,7 +69,7 @@
                             <td scope="row">{{ $publisherTotal }}</td>
                             <td scope="row">
                                 <a href="{{ route('publishers.index') }}">
-                                    <button class="btn_edit" title="Edit" type="button"> {{ trans('books/book.edit') }} </button>
+                                    <button class="btn btn-info" title="Option" type="button"> {{ trans('borrows/borrow.option') }} </button>
                                 </a>
                             </td>
                         </tr>
