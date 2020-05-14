@@ -116,12 +116,13 @@
                                     <button type="submit" class="btn_register">
                                         {{ trans('auth/register.btn_register') }}
                                     </button>
-                                    <button class="btn_login" href="{{ route('login') }}">
-                                            {{ trans('auth/register.login') }}
-                                    </button>
+                                    <a class="btn_login" type="button" href="{{ route('login') }}">
+                                        {{ trans('auth/register.login') }}
+                                    </a>
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>

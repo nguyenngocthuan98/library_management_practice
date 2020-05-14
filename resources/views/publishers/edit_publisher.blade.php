@@ -21,16 +21,28 @@
 
                 <label >{{ trans('publishers/edit_publisher.name') }}</label>
                 <input class="form-control" name="name_publisher" id="name_publisher" value="{{ $publisher->name_publisher }}" >
-
+                @error('name_publisher')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <label >{{ trans('publishers/edit_publisher.email') }}</label>
                 <input class="form-control" name="email" id="email" value="{{ $publisher->email }}">
-
+                @error('email')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <label >{{ trans('publishers/edit_publisher.address') }}</label>
                 <input class="form-control" name="address" id="address" value="{{ $publisher->address }}">
-                
+                @error('address')
+                    <span class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <div class="form-group edit_btn">
-                    <a class="btn_book_cancel" href="{{ route('publishers.index') }}" type="submit">{{ trans('publishers/edit_publisher.cancel') }}</a>
-                    <a class="btn_book_add" type="submit">{{ trans('publishers/edit_publisher.edit') }}</a>
+                    <a class="btn_book_cancel" href="{{ route('publishers.index') }}" >{{ trans('publishers/edit_publisher.cancel') }}</a>
+                    <button class="btn_book_add" type="submit" >{{ trans('publishers/edit_publisher.edit') }}</button>
                 </div>
             </div>
         </form>
