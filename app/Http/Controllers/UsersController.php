@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UsersController;
+use App\Repositories\User\UserRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UsersController extends Controller
 {
+    protected $userRepo;
+
     /**
      * Prevent unauthorized access by URL
      */
-    public function __construct()
+    public function __construct(UserRepositoryInterface $user)
     {
         $this->middleware('is_admin');
+        $this->userRepo = $user;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,15 +30,15 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $paginate = config('setting.paginate');
         $filters = request()->only('action', 'key');
 
         if($filters && $filters['action'] == 'search'){
             //For search
-            $users = DB::table('users')->where('name', 'like', '%'.$filters['key'].'%')
-                                        ->orderBy('id','ASC')->get();
+            $users = $this->userRepo->getUserBySearchName($filters['key'], $paginate);
         }else{
             //For all user
-            $users = DB::table('users')->orderBy('id','ASC')->get();
+            $users = $this->userRepo->paginate('id', 'DESC', $paginate);
         }
         return view('users.user', ['users' => $users]);
     }
@@ -45,8 +50,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $user = User::all();
-        return view('users.add_user',['user' => $user]);
+        return view('users.add_user');
     }
 
     /**
@@ -57,7 +61,24 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        
+        try {
+            $user = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'birth' => $request->birth,
+                'address' => $request->address,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+                'role' => $request->role,
+        ];
+        $this->userRepo->create($user);
+
+        return redirect()->back()->with(['create_success' => trans('controller/user.create_success')]);
+        } catch (ModelNotFoundException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
@@ -79,7 +100,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = $this->userRepo->findOrFail($id);
         return view('users.edit_user', ['user' => $user]);
     }
 
@@ -92,7 +113,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $user = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'birth' => $request->birth,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+        ];
+        $this->userRepo->findOrFail($id, $user);
+
+        return redirect()->back()->with(['update_success' => trans('controller/user.update_success') ]);
+        } catch (ModelNotFoundException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
@@ -103,7 +139,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::destroy($id);
-        return redirect('users');
+        
+        try {
+            $user = $this->userRepo->delete($id);
+        return redirect()->back()->with(['delete_success' => trans('controller/user.delete_success')]);
+        } catch (ModelNotFoundException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }

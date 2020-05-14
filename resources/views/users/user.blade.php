@@ -6,9 +6,15 @@
 
 <section class="group_section">
     <div class="container-fluid list_book">
+        @if (session('delete_success'))
+            <div class="alert alert-success mb-0 mt-2" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ session('delete_success') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-9">
-                <button type="button" class="btn_new"><a href="{{ route('users.create') }}">{{ trans('users/user.add_new') }}</a></button>
+                <a type="button" class="btn_new" href="{{ route('users.create') }}">{{ trans('users/user.add_new') }}</a>
             </div>
             <div class="col-3">
                 <div class="search-user">
@@ -61,18 +67,19 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('users/'.$data_user->id.'/edit')}}" class="btn_edit edit_user" title="Edit" type="submit" value="Edit">{{ trans('users/user.edit') }}</a>
+                        <a href="{{ route('users.edit',$data_user->id)}}" class="btn_edit edit_user" title="Edit" type="submit" value="Edit">{{ trans('users/user.edit') }}</a>
 
                         <form action="{{ url("users/$data_user->id") }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
-                            <button class="btn_delete delete_user" onclick="return confirm('Are you sure ???');" title="Delete" type="submit" value="Delete">{{ trans('users/user.delete') }}</button>
+                            <button class="btn_delete delete_user" title="Delete" type="submit" value="Delete">{{ trans('users/user.delete') }}</button>
                         </form>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $users->links() }}
     </div>
 </section>
 
