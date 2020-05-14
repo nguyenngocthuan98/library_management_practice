@@ -3,7 +3,6 @@
 @section('title_header', trans('books/book.title_header'))
 
 @section('main')
-
 <!-- Book item base-->
     <section class="book_section">
         <div class="container">
@@ -31,9 +30,7 @@
                     </div>
                     <div class="site-pagination">
                         <div class="content_center">
-                        <a href="#" class="active">01</a>
-                        <a href="#">02</a>
-                        <a href="#">03</a>
+                        <a href="{{ route('books.index') }}" class="active">{{ trans('books/book.read_more') }}</a>
                         </div>
                     </div>
                 </div>
@@ -48,27 +45,16 @@
                             </form>
                         </div>
                         {{-- End Search --}}
+                        {{-- show category --}}
                         <div class="widget_item">
                             <div class="categories_widget">
                                 <h4 class="widget_title"> {{ trans('books/book.category') }} </h4>
                                 <ul>
-                                    <li><a href="">Games</a></li>
-                                    <li><a href="">Gaming Tips & Tricks</a></li>
-                                    <li><a href="">Online Games</a></li>
-                                    <li><a href="">Team Games</a></li>
-                                    <li><a href="">Community</a></li>
-                                    <li><a href="">Uncategorized</a></li>
-                                    <li><a href="">Team Games</a></li>
-                                    <li><a href="">Community</a></li>
-                                    <li><a href="">Uncategorized</a></li>
-                                    <li><a href="">Gaming Tips & Tricks</a></li>
-                                    <li><a href="">Online Games</a></li>
-                                    <li><a href="">Team Games</a></li>
-                                    <li><a href="">Community</a></li>
-                                    <li><a href="">Uncategorized</a></li>
-                                    <li><a href="">Team Games</a></li>
-                                    <li><a href="">Community</a></li>
-                                    <li><a href="">Uncategorized</a></li>
+                                    @foreach ($categories as $category)
+                                        <li value="{{ $category->id }}">
+                                            {{ $category->name_category }}
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
