@@ -21,7 +21,6 @@
                             <th scope="col"> {{ trans('books/book.category') }} </th>
                             <th scope="col"> {{ trans('books/book.author') }} </th>
                             <th scope="col"> {{ trans('books/book.publisher') }} </th>
-                            <th scope="col"> {{ trans('books/book.status') }} </th>
                             @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
                                 <th class="width_t" scope="col"> {{ trans('books/book.option') }} </th>
                             @endif
@@ -35,8 +34,7 @@
                             <td scope="row"><a href="{{ route('books.show',$book->id) }}"><image class="image_list" src="{{ $book->image }}" alt="#"></image></a></td>
                             <td scope="row">{{ $book->category->name_category }}</td>
                             <td scope="row">{{ $book->author->name_author }}</td>
-                            <td scope="row">{{ $book->publisher->name_publisher}}</td>
-                            <td scope="row">{{ BookHelper::getRole($book->status) }}</td>
+                            <td scope="row">{{ $book->publisher->name_publisher }}</td>
                             @if (auth()->check() && Auth::user()->role == \App\Models\User::ADMIN)
                                 <td>
                                     <a href="{{ route('books.edit',$book->id) }}"><button class="btn_edit edit_user" title="Edit" type="submit" value="Edit"> {{ trans('books/book.edit') }} </button></a>

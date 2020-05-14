@@ -18,4 +18,5 @@ return [
 	'delete' => 'Delete',
 	'borrowed' => 'Borrowed',
 	'unknown' => 'Unknown',
+	'success' => 'Success',
 ];
