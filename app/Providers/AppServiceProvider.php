@@ -15,7 +15,17 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Repositories\Book\BookRepositoryInterface::class,
-            \App\Repositories\Book\BookRepository::class,
+            \App\Repositories\Book\BookRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Author\AuthorRepositoryInterface::class,
+            \App\Repositories\Author\AuthorRepository::class
+        );
+        
+        $this->app->singleton(
+            \App\Repositories\Comment\CommentRepositoryInterface::class,
+            \App\Repositories\Comment\CommentRepository::class
         );
     }
 

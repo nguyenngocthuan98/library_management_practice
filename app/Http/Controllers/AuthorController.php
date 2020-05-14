@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AuthorController;
 use App\Http\Requests\AuthorRequest;
+use App\Repositories\Author\AuthorRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AuthorController extends Controller
 {
+    protected $authorRepo;
+
+    public function __construct(AuthorRepositoryInterface $author)
+    {
+        $this->authorRepo = $author;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,10 +30,10 @@ class AuthorController extends Controller
 
         if($filters){
             // for search
-            $author = Author::where('name_author', 'like', '%'.$filters['key'].'%')->orderBy('id','DESC')->paginate($paginate);
+            $author = $this->authorRepo->getAuthorBySearchName($filters['key'], $paginate);
         }
         else{
-            $author = Author::orderBy('id','DESC')->paginate($paginate);
+            $author = $this->authorRepo->paginate('id', 'DESC', $paginate);
         }
 
         return view('authors.author', compact('author'));
@@ -53,7 +60,7 @@ class AuthorController extends Controller
         $author = [
             'name_author' => $req->name_author,
         ];
-        Author::create($author);
+        $this->authorRepo->create($author);
 
         return redirect()->back()->with(['success'=> 'Success' ]);
     }
@@ -78,7 +85,7 @@ class AuthorController extends Controller
     public function edit($id)
     {
         try {
-            $author = Author::where('id', $id)->first();
+            $author = $this->authorRepo->findOrFail($id);
 
             return view('authors.edit_author', ['author' => $author]);
         } catch (ModelNotFoundException $e) {
@@ -98,7 +105,7 @@ class AuthorController extends Controller
         $author = [
             'name_author' => $req->name_author,
         ];
-        Author::where('id', '=', $id)->update($author);
+        $this->authorRepo->update($id, $author);
 
         return redirect()->back()->with(['success'=> 'Success' ]);
     }
@@ -111,7 +118,7 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        $author = Author::destroy($id);
+        $author = $this->authorRepo->delete($id);
         return redirect('authors');
     }
 }
