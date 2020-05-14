@@ -37,6 +37,9 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.home.index') }}" class="nav-link">{{ trans('partials/navbar.ad-manage') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.chart_borrow.index') }}" class="nav-link">{{ trans('partials/navbar.chart') }}</a>
+                </li>
                 @endif
             </ul>
             <!-- Right Side Of Navbar -->

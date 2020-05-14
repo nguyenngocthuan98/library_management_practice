@@ -31,6 +31,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'is_admin', 'prefix' => 'a
     Route::get('borrows/return/{id}', 'BorrowController@pay')->name('admin.borrow.pay');
     Route::get('borrow/destroy/{id}', 'BorrowController@destroy')->name('admin.borrow.destroy');
     Route::get('borrow/action/{id}', 'BorrowController@action')->name('admin.borrow.action');
+    Route::get('chart', 'ChartBorrowController@index')->name('admin.chart_borrow.index');
+    Route::resource('users', 'UsersController');
 });
 
 //Home
