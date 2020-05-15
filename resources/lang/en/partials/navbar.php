@@ -18,5 +18,8 @@ return [
     'user' => 'User',
     'ad-manage' => 'Admin Manage',
     'list_borrow' => 'Borrow List',
-    'chart' => 'Chart',    
+    'chart' => 'Chart',
+    'notifications' => 'Notifications',
+    'mark-all-read' => 'Mark all as read',
+    'view-all' => 'View All',
 ];

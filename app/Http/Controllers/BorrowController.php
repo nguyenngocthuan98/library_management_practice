@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Borrow;
 use App\Models\Book;
+use Pusher\Pusher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\ Auth;
-
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
@@ -75,7 +75,22 @@ class BorrowController extends Controller
                 'id_user' => auth()->user()->id,
                 'id_book' => $id,
             ];
-            Borrow::create($borrow);
+            $borrow = Borrow::create($borrow);
+            // Send borrow notify
+            $data = [
+                'id' => $borrow->id,
+                'user' => $borrow->user->name,
+                'created_at' => $borrow->created_at,
+            ];
+
+            $pusher = new Pusher(
+                env('PUSHER_APP_KEY'),
+                env('PUSHER_APP_SECRET'),
+                env('PUSHER_APP_ID'),[
+                    'cluster' => 'ap1',
+                    'encrypted' => true]
+            );
+            $pusher->trigger('BorrowNotify', 'send-notify', $data);
 
             return redirect()->back()->with(['borrow-success' => trans('borrows/borrow.success_wait')]);
         }

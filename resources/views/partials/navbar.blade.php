@@ -40,8 +40,53 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.chart_borrow.index') }}" class="nav-link">{{ trans('partials/navbar.chart') }}</a>
                 </li>
+                {{-- bell of nitify to admin--}}
+                    <li class="nav-item dropdown dropdown-notifications">
+                        <a href="#notifications-panel" class="nav-link dropdown-toggle-bell" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bell notification-icon text-primary">
+                                <i class="ml-1 count-notify" data-count="0"></i>
+                            </i>
+                        </a>
+                        <div class="dropdown-container">
+                            <div class="dropdown-toolbar">
+                                <div class="dropdown-toolbar-actions">
+                                    <a href="#" class="text-primary">{{ trans('partials/navbar.mark-all-read') }}</a>
+                                </div>
+                                <h3 class="dropdown-toolbar-title">{{ trans('partials/navbar.notifications') }} (<span class="notif-count">{{ config('setting.item-min') }}</span>)</h3>
+                            </div>
+                            <ul class="dropdown-menu">
+                            </ul>
+                            <div class="dropdown-footer text-center">
+                                <a href="#" class="text-danger">{{ trans('partials/navbar.view-all') }}</a>
+                            </div>
+                        </div>
+                    </li>
+                @endif
+                {{-- bell of nitify to user--}}
+                @if (auth()->check() && Auth::user()->role == \App\Models\User::USER)
+                    <li class="nav-item dropdown dropdown-notifications">
+                        <a href="#notifications-panel" class="nav-link dropdown-toggle-bell" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bell notification-icon text-primary">
+                                <i class="ml-1 count-notify" data-count="0"></i>
+                            </i>
+                        </a>
+                        <div class="dropdown-container">
+                            <div class="dropdown-toolbar">
+                                <div class="dropdown-toolbar-actions">
+                                    <a href="#" class="text-primary">{{ trans('partials/navbar.mark-all-read') }}</a>
+                                </div>
+                                <h3 class="dropdown-toolbar-title">{{ trans('partials/navbar.notifications') }} (<span class="notif-count">{{ config('setting.item-min') }}</span>)</h3>
+                            </div>
+                            <ul class="dropdown-menu">
+                            </ul>
+                            <div class="dropdown-footer text-center">
+                                <a href="#" class="text-danger">{{ trans('partials/navbar.view-all') }}</a>
+                            </div>
+                        </div>
+                    </li>
                 @endif
             </ul>
+            {{-- trans('partials/navbar. --}}
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
